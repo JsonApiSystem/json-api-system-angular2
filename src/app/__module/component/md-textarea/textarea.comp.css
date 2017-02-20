@@ -1,0 +1,11 @@
+.md-textarea{
+    resize: vertical;
+    width: 100%;
+    border: none;
+    border-bottom: 3px solid #eeeeee;
+    outline: none;
+    font-size: 14px;
+}
+.md-textarea:focus{
+    border-bottom: 3px #2196F3 solid;
+}

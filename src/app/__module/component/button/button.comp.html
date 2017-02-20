@@ -1,0 +1,8 @@
+<button [ngClass]="{'btn-flat':isFlat}" [disabled]="isLoading">
+    <i *ngIf="isShow||isLoading"
+       class="fa fa-{{icon}} loading-show"
+       [ngClass]="{'fa-spinner':isLoading,'fa-spin':isLoading}"
+    >
+    </i>
+    {{text}}
+</button>

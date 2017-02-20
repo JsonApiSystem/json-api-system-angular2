@@ -1,0 +1,12 @@
+<div >
+    <i class="fa fa-{{icon}} md-input-icon-left" *ngIf="icon"></i>
+    <i class="fa fa-{{iconRight}} md-input-icon-right "
+       *ngIf="iconRight"
+       class="com-input" [ngClass]="{'md-input-right':isRight==2,'md-input-error':isRight==3}"></i>
+    <input
+            class="md-input"
+            [ngClass]="{'md-input-right':isRight==2,'md-input-error':isRight==3}"
+            type="{{type}}"
+            placeholder="{{placeholder}}"
+            >
+</div>

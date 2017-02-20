@@ -1,0 +1,23 @@
+<div class="comp-alert"
+     *ngIf="alertService.isShow"
+
+>
+    <!--(mousemove)="OnMouseMove($event)"-->
+    <!--(window:resize)="OnResize($event)"-->
+    <!--(mouseup)="OnMouseUp($event)"-->
+    <!--(mousedown)="OnBackgroundMouseDown($event)"-->
+    <!--(mousedown)="OnMouseDown($event)"-->
+    <div class="box-alert">
+        <div class="box-alert-title" >
+            <p class="alert-title">{{alertService.title}}</p>
+        </div>
+        <div class="alert-content">
+            {{alertService.content}}
+        </div>
+        <div class="alert-operation">
+            <md-button [text]="'确认'" [isFlat]="true" (click)="OnSureBtnClick()"></md-button>
+            <md-button [text]="'取消'" [isFlat]="true" (click)="OnCancelBtnClick()"></md-button>
+        </div>
+    </div>
+
+</div>

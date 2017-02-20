@@ -1,0 +1,53 @@
+.com-input {
+
+}
+
+.md-input-icon-left {
+    width: 10%;
+    line-height: 32px;
+    position: absolute;
+    margin-left: 10px;
+}
+
+.md-input-icon-right {
+    width: 10%;
+    line-height: 32px;
+    position: absolute;
+    right: 15px;
+}
+
+.md-input-right{
+    color: green;
+}
+.md-input-error{
+    color: red;
+}
+/*.md-input-error {*/
+    /*border-bottom: 3px darkred solid;*/
+/*}*/
+/*.md-input-icon-right-error{*/
+    /*color: darkred;*/
+/*}*/
+
+/*.md-input-right {*/
+    /*border-bottom: 3px darkgreen solid;*/
+/*}*/
+/*.md-input-icon-right-right{*/
+    /*color: darkgreen;*/
+/*}*/
+.md-input {
+    border: 0;
+    border-bottom: 3px #eeeeee solid;
+    padding-left: 30px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 32px;
+    outline: none;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+.md-input:focus {
+    border-bottom: 3px #2196F3 solid;
+}
