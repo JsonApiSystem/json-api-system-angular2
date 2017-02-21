@@ -8,16 +8,15 @@ import {Injectable} from '@angular/core'
 import {MdHttpService} from "../__module/http/MdHttpService";
 import {API}from './ApiConfig'
 @Injectable()
-export class UserModel {
+export class ApiGroupModel {
     constructor(private httpService: MdHttpService) {
 
     }
 
 
-    httpApiGroupGet(email: string, pwd: string, success: any, failure: any) {
+    httpApiGroupGet(data: any={id:0}, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: email,
-            pwd: pwd
+            id: data.id,
         }, {
             success(data){
                 success()
@@ -34,10 +33,12 @@ export class UserModel {
         })
     }
 
-    httpApiGroupCreate(email: string, pwd: string, success: any, failure: any) {
+    httpApiGroupCreate(data: any={project_id:0,name:'',summary:'',icon:''}, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: email,
-            pwd: pwd
+            project_id:data.project_id,
+            name:data.name,
+            summary:data.summary,
+            icon:data.icon
         }, {
             success(data){
                 success()
@@ -54,10 +55,12 @@ export class UserModel {
         })
     }
 
-    httpApiGroupUpdate(email: string, pwd: string, success: any, failure: any) {
+    httpApiGroupUpdate(data: any={id:0,name:'',summary:'',icon:''}, success: any, failure: any) {
         this.httpService.post(API.API_USER_REGISTER, {
-            email: email,
-            pwd: pwd
+            id:data.id,
+            name:data.name,
+            summary:data.summary,
+            icon:data.icon
         }, {
             success(data){
                 success()
@@ -74,10 +77,9 @@ export class UserModel {
         })
     }
 
-    httpApiGroupDelete(email: string, pwd: string, success: any, failure: any) {
+    httpApiGroupDelete(data: any={id:0},success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: email,
-            pwd: pwd
+            id: data.id,
         }, {
             success(data){
                 success()

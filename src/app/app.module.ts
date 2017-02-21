@@ -17,6 +17,10 @@ import {ProjectEditorService} from "./pages/project-editor/project-editor.page.s
 import {ProjectEditorPage} from "./pages/project-editor/project-editor.page";
 import {MdHttpModule} from "./__module/http/http.module";
 import {UserModel} from "./models/UserModel";
+import {ProjectModel} from "./models/ProjectModel";
+import {ApiGroupModel} from "./models/ApiGroupModel";
+import {ApiModel} from "./models/ApiModel";
+import {FormsModule} from "@angular/forms";
 
 const appRoutes: Routes = [
 
@@ -27,16 +31,16 @@ const appRoutes: Routes = [
         component: IndexPage,
         children: [
             {
-                path:'',
-                component:ProjectPage
+                path: '',
+                component: ProjectPage
             },
             {
-                path:'api',
-                component:ApiPage
+                path: 'api',
+                component: ApiPage
             },
             {
-                path:'project',
-                component:ProjectPage
+                path: 'project',
+                component: ProjectPage
             }
         ]
     }
@@ -45,13 +49,17 @@ const appRoutes: Routes = [
     imports: [
         BrowserModule,
         ComponentModule,
+        FormsModule,
         RouterModule.forRoot(appRoutes, {useHash: true}),
         MdHttpModule
     ],
-    providers:[
+    providers: [
         ApiEditorService,
         ProjectEditorService,
-        UserModel
+        UserModel,
+        ProjectModel,
+        ApiGroupModel,
+        ApiModel
     ],
     declarations: [
         AppPage,

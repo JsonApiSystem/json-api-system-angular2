@@ -1,0 +1,11 @@
+<div class="toast-component">
+    <div *ngFor="let i of toastService.getToastList();let in=index">
+        <div class="toast "
+             [ngClass]="{'bg-danger':i.style==2}"
+             (click)="OnToastClick(in)"
+        >
+            <p>{{i.content}}</p>
+        </div>
+    </div>
+
+</div>

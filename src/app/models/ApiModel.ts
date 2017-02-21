@@ -8,16 +8,15 @@ import {Injectable} from '@angular/core'
 import {MdHttpService} from "../__module/http/MdHttpService";
 import {API}from './ApiConfig'
 @Injectable()
-export class UserModel {
+export class ApiModel {
     constructor(private httpService: MdHttpService) {
 
     }
 
 
-    httpApiGet(email: string, pwd: string, success: any, failure: any) {
+    httpApiGet(data: any = {group_id: 0}, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: email,
-            pwd: pwd
+            group_id: data.group_id,
         }, {
             success(data){
                 success()
@@ -34,10 +33,22 @@ export class UserModel {
         })
     }
 
-    httpApiCreate(email: string, pwd: string, success: any, failure: any) {
+    httpApiCreate(data: any = {
+        group_id: 0,
+        project_id: 0,
+        name: '',
+        summary: '',
+        url: '',
+        method: 0
+    }, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: email,
-            pwd: pwd
+            group_id: data.group_id,
+            project_id: data.project_id,
+            name: data.name,
+            summary: data.summary,
+            url: data.url,
+            method: data.method
+
         }, {
             success(data){
                 success()
@@ -54,10 +65,22 @@ export class UserModel {
         })
     }
 
-    httpApiUpdate(email: string, pwd: string, success: any, failure: any) {
+    httpApiUpdate(data: any = {
+        id: 0,
+        group_id: 0,
+        project_id: 0,
+        name: '',
+        summary: '',
+        url: '',
+        method: 0
+    }, success: any, failure: any) {
         this.httpService.post(API.API_USER_REGISTER, {
-            email: email,
-            pwd: pwd
+            id: data.id,
+            group_id: data.group_id,
+            name: data.name,
+            summary: data.summary,
+            url: data.url,
+            method: data.method
         }, {
             success(data){
                 success()
@@ -74,10 +97,9 @@ export class UserModel {
         })
     }
 
-    httpApiDelete(email: string, pwd: string, success: any, failure: any) {
+    httpApiDelete(data: any = {id: 0}, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: email,
-            pwd: pwd
+            id: data.id,
         }, {
             success(data){
                 success()

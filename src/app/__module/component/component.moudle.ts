@@ -18,6 +18,8 @@ import {LeftMenuComp} from "./left-menu/left-menu.comp";
 import {AlertComp} from "./alert/alert.comp";
 import {AlertService} from "./alert/alert.comp.service";
 import {TextareaComp} from "./md-textarea/textarea.comp";
+import {SmallToastService} from "./toast/small-toast.service";
+import {SmallToastComponent} from "./toast/small-toast.component";
 
 @NgModule({
     imports: [
@@ -26,7 +28,8 @@ import {TextareaComp} from "./md-textarea/textarea.comp";
 
     ],
     providers: [
-        AlertService
+        AlertService,
+        SmallToastService
     ],
     declarations: [
         TopNavComp,
@@ -36,7 +39,8 @@ import {TextareaComp} from "./md-textarea/textarea.comp";
         InputComp,
         LeftMenuComp,
         AlertComp,
-        TextareaComp
+        TextareaComp,
+        SmallToastComponent
     ],
     exports: [
         TopNavComp,
@@ -46,7 +50,8 @@ import {TextareaComp} from "./md-textarea/textarea.comp";
         InputComp,
         LeftMenuComp,
         AlertComp,
-        TextareaComp
+        TextareaComp,
+        SmallToastComponent
     ]
 })
 export class ComponentModule {

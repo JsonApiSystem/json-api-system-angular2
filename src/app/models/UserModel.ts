@@ -13,12 +13,13 @@ export class UserModel {
 
     }
 
+    static USER_LOGIN_PASSWORD_USERNAME_ERROR = 201
     userInfo: any
 
-    httpUserLogin(email: string, pwd: string, success: any, failure: any) {
+    httpUserLogin(data: any = {email: '', pwd: ''}, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: email,
-            pwd: pwd
+            email: undefined,
+            pwd: data.pwd
         }, {
             success(data){
                 success()
@@ -34,10 +35,11 @@ export class UserModel {
             }
         })
     }
-    httpUserRegister(email: string, pwd: string, success: any, failure: any) {
+
+    httpUserRegister(data: any = {email: '', pwd: ''}, success: any, failure: any) {
         this.httpService.post(API.API_USER_REGISTER, {
-            email: email,
-            pwd: pwd
+            email: data.email,
+            pwd: data.pwd
         }, {
             success(data){
                 success()

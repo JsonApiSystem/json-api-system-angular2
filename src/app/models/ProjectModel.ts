@@ -8,16 +8,17 @@ import {Injectable} from '@angular/core'
 import {MdHttpService} from "../__module/http/MdHttpService";
 import {API}from './ApiConfig'
 @Injectable()
-export class UserModel {
+export class ProjectModel {
     constructor(private httpService: MdHttpService) {
 
     }
 
 
-    httpProjectGet(email: string, pwd: string, success: any, failure: any) {
+    httpProjectGet(data: any = {user_id: '', page_index: 1, page_size: 999}, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: email,
-            pwd: pwd
+            user_id: data.user_id,
+            page_index: data.page_index,
+            page_size: data.page_size,
         }, {
             success(data){
                 success()
@@ -34,10 +35,12 @@ export class UserModel {
         })
     }
 
-    httpProjectCreate(email: string, pwd: string, success: any, failure: any) {
+    httpProjectCreate(data: any = {name: '', summary: '', icon: '', user_id: 0}, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: email,
-            pwd: pwd
+            name: data.name,
+            summary: data.summary,
+            icon: data.icon,
+            user_id: data.user_id
         }, {
             success(data){
                 success()
@@ -54,10 +57,12 @@ export class UserModel {
         })
     }
 
-    httpProjectUpdate(email: string, pwd: string, success: any, failure: any) {
+    httpProjectUpdate(data: any = {id: 0, name: '', summary: '', icon: ''}, success: any, failure: any) {
         this.httpService.post(API.API_USER_REGISTER, {
-            email: email,
-            pwd: pwd
+            name: data.name,
+            summary: data.summary,
+            icon: data.icon,
+            id: data.id
         }, {
             success(data){
                 success()
@@ -74,10 +79,9 @@ export class UserModel {
         })
     }
 
-    httpProjectDelete(email: string, pwd: string, success: any, failure: any) {
+    httpProjectDelete(data:any={id:0}, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: email,
-            pwd: pwd
+            id: data.id,
         }, {
             success(data){
                 success()

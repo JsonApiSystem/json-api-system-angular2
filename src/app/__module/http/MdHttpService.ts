@@ -63,11 +63,21 @@ export class MdHttpService {
     }
 
     protected transToJsonData(data: any) {
+        data = this.filterNullParam(data)
         return JSON.stringify({
             data: data,
             timestamp: new Date().getTime(),
             sign: ''
         })
+    }
+
+    private filterNullParam(data: any) {
+        for (let p in data) {
+            if(data[p]==''||data[p]==0||data[p]==null||data[p]=='undefined'||data[p]==undefined){
+                delete data[p]
+            }
+        }
+        return data
     }
 
 }

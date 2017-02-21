@@ -2,6 +2,8 @@ import {Component, ViewChild, Renderer, ElementRef, OnInit} from '@angular/core'
 import {Router} from "@angular/router";
 import {ButtonComp} from "../../__module/component/button/button.comp";
 import {InputComp} from "../../__module/component/input/input.comp";
+import {UserModel} from "../../models/UserModel";
+import {SmallToastService} from "../../__module/component/toast/small-toast.service";
 @Component({
     selector: 'login',
     templateUrl: './login.page.html',
@@ -20,6 +22,9 @@ export class LoginPage implements OnInit {
     selfWidth: number
     selfHeight: number
     type: number = 1
+    email: string = ''
+    password: string = ''
+    password2: string = ''
 
     ngOnInit() {
         // var element=this.renderer.selectRootElement('.login-panel')
@@ -52,7 +57,9 @@ export class LoginPage implements OnInit {
 
     constructor(private router: Router,
                 private renderer: Renderer,
-                private elementRef: ElementRef) {
+                private elementRef: ElementRef,
+                private userModel: UserModel,
+                private smallToastService: SmallToastService) {
         // console.log(elementRef.nativeElement)
         // console.log(elementRef.nativeElement.offsetWidth)
         // console.log(this.renderer.selectRootElement('.page-login').offsetWidth)
@@ -106,15 +113,28 @@ export class LoginPage implements OnInit {
 
 
     OnLoginBtnClick() {
-        // this.loginInput.error()
-        // this.loginBtn.toggleLoading()
-        this.OnLoginSuccess()
+        this.loginBtn.toggleLoading()
+        this.userModel.httpUserLogin({
+            email: this.email,
+            password: this.password
+        }, this.OnLoginSuccess, this.OnLoginFailure)
     }
 
-    OnLoginSuccess() {
-
+    OnLoginSuccess(data: any) {
         this.loginBtn.toggleLoading()
+        this.smallToastService.showToast('登录成功')
         this.router.navigate(['index'])
+
+    }
+
+    OnLoginFailure(code: number) {
+        this.loginBtn.toggleLoading()
+        switch (code) {
+            case UserModel.USER_LOGIN_PASSWORD_USERNAME_ERROR: {
+                this.smallToastService.showToast('账户名或者密码错误')
+                break;
+            }
+        }
     }
 
     OnRegisterBtnClick() {
