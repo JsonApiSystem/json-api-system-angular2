@@ -1,25 +1,21 @@
 <div class="com-api-group">
     <div class="box-api-group-summary">
-            <p class="api-num"><span class="api-num-active">2</span>/21</p>
-            <div class="box-group-summary">
-                <p class="group-title">标题</p>
-                <p class="group-summary"> 简介</p>
-            </div>
+        <p class="api-num"><span class="api-num-active">2</span>/21</p>
+        <div class="box-group-summary">
+            <p class="group-title">{{this.apiGroup.name}}</p>
+            <p class="group-summary"> {{this.apiGroup.summary}}</p>
+
+        </div>
+        <div  class="box-group-test t-r">
+            <md-button [text]="'测试'" [isFlat]="true" (click)="HandleTestClick(this.apiGroup.id)" ></md-button>
+        </div>
     </div>
-    <div class="box-api-item">
-        <api-item></api-item>
+    <div class="box-api-item" *ngFor="let api of this.apiList; let i = index;">
+        <api-item [api]="api"></api-item>
     </div>
-    <div class="box-api-item">
-        <api-item></api-item>
-    </div>
-    <div class="box-api-item">
-        <api-item></api-item>
-    </div>
-    <div class="box-api-item">
-        <api-item></api-item>
-    </div>
+
     <div class="t-r">
-        <md-button [text]="'添加'"  [isFlat]="true"  (click)="OnAddBtnClick()"></md-button>
+        <md-button [text]="'添加'" [isFlat]="true" (click)="OnAddBtnClick()"></md-button>
         <md-button [text]="'删除'" [isFlat]="true" (click)="OnDeleteBtnClick()"></md-button>
     </div>
 </div>

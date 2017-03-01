@@ -1,0 +1,22 @@
+<div class="modal-project-new" *ngIf="projectNewModalService.isShow">
+    <div class="box-project-new-content">
+        <card>
+            <div class="project-new-header">
+                <p class="project-new-title">{{projectNewModalService.title}}</p>
+            </div>
+            <div class="project-new-content">
+                <div>
+                    <md-input></md-input>
+                </div>
+                <div>
+                    <md-textarea></md-textarea>
+                </div>
+            </div>
+
+            <div class="project-new-operation" >
+                <md-button [text]="'创 建'" (click)="HandleProjectNewClick()"></md-button>
+                <md-button [text]="'取 消'" [isFlat]="true" (click)="this.projectNewModalService.hide()"></md-button>
+            </div>
+        </card>
+    </div>
+</div>

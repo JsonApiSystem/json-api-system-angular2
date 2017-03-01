@@ -24,9 +24,15 @@
     font-size: 30px;
 }
 .box-group-summary{
+    width: 50%;
     display: inline-block;
     vertical-align: middle;
     height: 50px;
+}
+.box-group-test{
+    float: right;
+    line-height: 50px;
+    text-align: right;
 }
 .group-title{
 

@@ -6,8 +6,7 @@ import {ProjectEditorService} from "./project-editor.page.service";
     styleUrls: ['./project-editor.page.css']
 })
 export class ProjectEditorPage {
-    constructor(private projectEditorService: ProjectEditorService) {
-
+    constructor(private projectEditorService: ProjectEditorService,) {
     }
 
     OnSaveBtnClick() {

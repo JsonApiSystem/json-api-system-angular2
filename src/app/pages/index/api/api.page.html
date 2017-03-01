@@ -1,14 +1,5 @@
 <div class="page-api">
-    <div class="box-api-group">
-        <api-group></api-group>
-    </div>
-    <div class="box-api-group">
-        <api-group></api-group>
-    </div>
-    <div class="box-api-group">
-        <api-group></api-group>
-    </div>
-    <div class="box-api-group">
-        <api-group></api-group>
+    <div class="box-api-group"  *ngFor="let group of this.groupList; let i = index;">
+        <api-group [apiGroup]="group"></api-group>
     </div>
 </div>

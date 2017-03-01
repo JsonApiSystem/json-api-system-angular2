@@ -21,6 +21,15 @@ import {ProjectModel} from "./models/ProjectModel";
 import {ApiGroupModel} from "./models/ApiGroupModel";
 import {ApiModel} from "./models/ApiModel";
 import {FormsModule} from "@angular/forms";
+import {UserLocalStorage} from "./utils/UserLocalStorage";
+import {LoginPageService} from "./pages/login/login.page.service";
+import {ProjectNewModalService} from "./pages/project-new-modal/project-new.modal.service";
+import {ProjectNewModal} from "./pages/project-new-modal/project-new.modal";
+import {ProjectPageService} from "./pages/index/project/project.service";
+import {ApiPageService} from "./pages/index/api/api.page.service";
+import {ApiGroupService} from "./pages/index/api/api-group/api-group.service";
+import {TestPage} from "./pages/index/test/test.page";
+import {TestPageService} from "./pages/index/test/test.page.service";
 
 const appRoutes: Routes = [
 
@@ -35,12 +44,16 @@ const appRoutes: Routes = [
                 component: ProjectPage
             },
             {
-                path: 'api',
+                path: 'api/:id',
                 component: ApiPage
             },
             {
                 path: 'project',
                 component: ProjectPage
+            },
+            {
+                path: 'test/:i',
+                component: TestPage
             }
         ]
     }
@@ -54,12 +67,20 @@ const appRoutes: Routes = [
         MdHttpModule
     ],
     providers: [
+        UserLocalStorage,
         ApiEditorService,
         ProjectEditorService,
         UserModel,
         ProjectModel,
         ApiGroupModel,
-        ApiModel
+        ApiModel,
+        UserLocalStorage,
+        LoginPageService,
+        ProjectNewModalService,
+        ProjectPageService,
+        ApiPageService,
+        ApiGroupService,
+        TestPageService
     ],
     declarations: [
         AppPage,
@@ -71,7 +92,9 @@ const appRoutes: Routes = [
         ApiItemComp,
         ProjectPage,
         ProjectComp,
-        ProjectEditorPage
+        ProjectEditorPage,
+        ProjectNewModal,
+        TestPage
 
 
     ],

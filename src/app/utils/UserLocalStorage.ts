@@ -1,15 +1,16 @@
+import {Injectable} from "@angular/core";
 /**
  * NAME : UserLocalStorage
  * USER : FollowWinter
  * DATE : 20/02/2017
  * SUMMARY :
  */
-
+@Injectable()
 export class UserLocalStorage {
     static USER_INFO = 'USER_INFO'
 
     getUserInfo() {
-        return localStorage.getItem(UserLocalStorage.USER_INFO)
+        return JSON.parse(localStorage.getItem(UserLocalStorage.USER_INFO));
     }
 
     setUserInfo(userInfo: any) {
@@ -18,5 +19,16 @@ export class UserLocalStorage {
 
     clearUserInfo() {
         localStorage.removeItem(UserLocalStorage.USER_INFO)
+    }
+    getUserId(){
+        return this.getUserInfo()['id']
+    }
+
+    isLogin() {
+        if (this.getUserInfo() == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

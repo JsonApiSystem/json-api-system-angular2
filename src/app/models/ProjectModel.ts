@@ -14,19 +14,17 @@ export class ProjectModel {
     }
 
 
-    httpProjectGet(data: any = {user_id: '', page_index: 1, page_size: 999}, success: any, failure: any) {
-        this.httpService.post(API.API_USER_LOGIN, {
+    httpProjectGet(data: any = {user_id: '', page_index: 1, page_size: 999}, context:any) {
+        this.httpService.post(API.API_PROJECT_GET, {
             user_id: data.user_id,
             page_index: data.page_index,
             page_size: data.page_size,
         }, {
             success(data){
-                success()
-                console.log(data)
+                context.OnProjectGetSuccess(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                context.OnProjectGetFailure(code)
             },
             error(){
                 console.log()
@@ -79,7 +77,7 @@ export class ProjectModel {
         })
     }
 
-    httpProjectDelete(data:any={id:0}, success: any, failure: any) {
+    httpProjectDelete(data: any = {id: 0}, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
             id: data.id,
         }, {
@@ -98,4 +96,18 @@ export class ProjectModel {
         })
     }
 
+}
+
+export abstract class ProjectModelListener {
+    OnProjectGetSuccess(data: any) {
+
+    }
+
+    OnProjectGetFailure(code: any) {
+
+    }
+
+    OnProjectGetError() {
+
+    }
 }

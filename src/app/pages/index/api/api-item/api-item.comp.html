@@ -1,8 +1,8 @@
 <div class="com-api-item">
-    <p class="api-title"> title</p>
-    <p class="api-summary">summary</p>
+    <p class="api-title"> {{this.api.name}}</p>
+    <p class="api-summary">{{this.api.summary}}</p>
     <div class="api-operation">
-        <md-button [text]="'编辑'" [isFlat]="true" (click)="OnEditorBtnClick()"></md-button>
-        <md-button [text]="'删除'" [isFlat]="true" (click)="OnDeleteBtnClick()"></md-button>
+        <md-button [text]="'编辑'" [isFlat]="true" (click)="HandleEditorBtnClick()"></md-button>
+        <md-button [text]="'删除'" [isFlat]="true" (click)="HandleDeleteBtnClick()"></md-button>
     </div>
 </div>

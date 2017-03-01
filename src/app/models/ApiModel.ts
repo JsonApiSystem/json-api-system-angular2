@@ -14,20 +14,17 @@ export class ApiModel {
     }
 
 
-    httpApiGet(data: any = {group_id: 0}, success: any, failure: any) {
-        this.httpService.post(API.API_USER_LOGIN, {
+    httpApiGet(data: any = {group_id: 0}, context: any) {
+        this.httpService.post(API.API_GET, {
             group_id: data.group_id,
         }, {
             success(data){
-                success()
-                console.log(data)
+                context.OnApiGetSuccessListener(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                context.OnApiGetFailureListener(code)
             },
             error(){
-                console.log()
 
             }
         })
@@ -116,4 +113,10 @@ export class ApiModel {
         })
     }
 
+}
+
+export interface ApiGetListener {
+    OnApiGetSuccessListener(data: any): void
+    OnApiGetFailureListener(code: any): void
+    OnApiGetErrorListener(): void
 }

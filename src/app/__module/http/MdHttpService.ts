@@ -14,6 +14,7 @@ export class MdHttpService {
     }
 
     post(url: string, data: any, callback: MdHttpListener) {
+
         this.http.post(url, this.transToJsonData(data), <RequestOptionsArgs>{
             headers: this.headers
         }).toPromise()
@@ -26,7 +27,7 @@ export class MdHttpService {
                 }
             }).catch(error => {
             if (callback.error) {
-                callback.error()
+                callback.error(error.status)
             }
         })
 
@@ -49,7 +50,7 @@ export class MdHttpService {
                 }
             }).catch(error => {
             if (callback.error) {
-                callback.error()
+                callback.error(error)
             }
         })
         return
@@ -63,6 +64,7 @@ export class MdHttpService {
     }
 
     protected transToJsonData(data: any) {
+
         data = this.filterNullParam(data)
         return JSON.stringify({
             data: data,
@@ -90,7 +92,7 @@ export class MdHttpListener {
 
     }
 
-    error() {
+    error(error:any) {
 
     }
 }

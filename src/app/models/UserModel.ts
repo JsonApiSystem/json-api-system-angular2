@@ -7,31 +7,32 @@
 import {Injectable} from '@angular/core'
 import {MdHttpService} from "../__module/http/MdHttpService";
 import {API}from './ApiConfig'
+import {Model} from "./Model";
+import {SmallToastService} from "../__module/component/toast/small-toast.service";
+import {LoginPageListener} from "../pages/login/login.page.service";
 @Injectable()
-export class UserModel {
-    constructor(private httpService: MdHttpService) {
+export class UserModel extends Model {
 
+    constructor(private httpService: MdHttpService,
+                protected smallToastService: SmallToastService) {
+        super(smallToastService)
     }
 
     static USER_LOGIN_PASSWORD_USERNAME_ERROR = 201
-    userInfo: any
 
-    httpUserLogin(data: any = {email: '', pwd: ''}, success: any, failure: any) {
+    httpUserLogin(data: any = {email: '', pwd: ''}, listener: LoginPageListener) {
         this.httpService.post(API.API_USER_LOGIN, {
-            email: undefined,
+            email: data.email,
             pwd: data.pwd
         }, {
             success(data){
-                success()
-                console.log(data)
+                listener.OnLoginSuccessListener(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                listener.OnLoginFailureListener(code)
             },
             error(){
-                console.log()
-
+                listener.OnLoginErrorListener()
             }
         })
     }

@@ -1,0 +1,45 @@
+.page-test{
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 99999;
+}
+.box-api-list{
+    font-size: 14px;
+    display: inline-block;
+    width: 15%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+.box-task{
+
+    font-size: 14px;
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    vertical-align: top;
+
+}
+.box-back{
+    text-align: center;
+    width: 5%;
+    height: 40px;
+    font-size: 14px;
+    color: #888888;
+    display: inline-block;
+}
+.box-result{
+    width: 50%;
+    display: inline-block;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    vertical-align: top;
+}

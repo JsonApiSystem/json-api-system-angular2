@@ -20,16 +20,18 @@ import {AlertService} from "./alert/alert.comp.service";
 import {TextareaComp} from "./md-textarea/textarea.comp";
 import {SmallToastService} from "./toast/small-toast.service";
 import {SmallToastComponent} from "./toast/small-toast.component";
+import {FormsModule} from "@angular/forms";
+import {ModalService} from "./modal/modal.comp.service";
 
 @NgModule({
     imports: [
         BrowserModule,
-        MaterialModule,
-
+        FormsModule
     ],
     providers: [
         AlertService,
-        SmallToastService
+        SmallToastService,
+        ModalService
     ],
     declarations: [
         TopNavComp,

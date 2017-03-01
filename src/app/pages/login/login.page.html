@@ -10,27 +10,27 @@
             </div>
             <div class="login-content">
                 <div>
-                    <md-input #loginInput
+                    <md-input #emailInput
                               [type]="'text'"
                               [icon]="'user'"
                               [placeholder]="'请输入账户'"
                     ></md-input>
                 </div>
                 <div>
-                    <md-input #logigPassword
+                    <md-input #passwordInput
                               [type]="'password'"
                               [icon]="'key'"
                               [placeholder]="'密码'"
                     ></md-input>
-                    <md-input #loginPassword2
+                    <md-input #password2Input
                               *ngIf="type==2"
-                              [type]="'password'"
+                              [type]="'password2'"
                               [icon]="'key'"
                               [placeholder]="'重新输入密码'"
                     ></md-input>
                 </div>
                 <div *ngIf="type==1">
-                    <md-button [text]="'登 录'" (click)="OnLoginBtnClick()" #login></md-button>
+                    <md-button [text]="'登 录'" (click)="handleLoginBtnClick()" #login></md-button>
                     <md-button [text]="'注 册'" [isFlat]="true" (click)="typeToggle()" #register></md-button>
                 </div>
                 <div *ngIf="type==2">
