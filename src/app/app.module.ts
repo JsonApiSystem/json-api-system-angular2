@@ -30,6 +30,12 @@ import {ApiPageService} from "./pages/index/api/api.page.service";
 import {ApiGroupService} from "./pages/index/api/api-group/api-group.service";
 import {TestPage} from "./pages/index/test/test.page";
 import {TestPageService} from "./pages/index/test/test.page.service";
+import {ApiNewComp} from "./pages/index/api/api-new/api-new.comp";
+import {TestTaskComp} from "./pages/index/test/test-task/test-task.comp";
+import {TestTaskNewComp} from "./pages/index/test/test-task/test-task-new/test-task-new.comp";
+import {ApiResponseComp} from "./pages/api-editor/api-response/api-response.com";
+import {ApiParamComp} from "./pages/api-editor/api-param/api-param.com";
+import {ApiParamItemComp} from "./pages/api-editor/api-param/api-param-item/api-param-item.com";
 
 const appRoutes: Routes = [
 
@@ -94,9 +100,13 @@ const appRoutes: Routes = [
         ProjectComp,
         ProjectEditorPage,
         ProjectNewModal,
-        TestPage
-
-
+        TestPage,
+        ApiNewComp,
+        TestTaskComp,
+        TestTaskNewComp,
+        ApiParamComp,
+        ApiResponseComp,
+        ApiParamItemComp
     ],
     bootstrap: [AppPage]
 })

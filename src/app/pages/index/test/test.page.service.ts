@@ -6,7 +6,7 @@
  */
 
 import {Injectable} from "@angular/core";
-import {ApiGetListener, ApiModel} from "../../../models/ApiModel";
+import {ApiGetListener, ApiModel, ApiDetailListener} from "../../../models/ApiModel";
 import {AppPage} from "../../app.page";
 import {AppPageService} from "../../app.page.service";
 @Injectable()
@@ -25,8 +25,21 @@ export class TestPageService extends AppPageService {
     }
 
 
+    getApiDetail(id: any) {
+        this.apiModel.httpApiDetail({id: id}, this.context);
+    }
 }
-export class TestPageListener implements ApiGetListener {
+export class TestPageListener implements ApiGetListener,ApiDetailListener {
+    OnApiDetailSuccessListener(data: any): void {
+
+    }
+
+    OnApiDetailFailureListener(code: any): void {
+    }
+
+    OnApiDetailErrorListener(): void {
+    }
+
     OnApiGetSuccessListener(data: any): void {
     }
 

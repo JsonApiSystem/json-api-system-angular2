@@ -1,0 +1,25 @@
+<div>
+    <div class="box-container">
+        <p class="box3">名称</p>
+        <div class="box7">
+            <md-input></md-input>
+        </div>
+    </div>
+    <div class="box-container">
+        <p class="box3">简介</p>
+        <div class="box7">
+            <md-input></md-input>
+        </div>
+    </div>
+    <div class="box-container" *ngFor="let p of this.param; let i = index;">
+        <p class="box3">{{p.key}}</p>
+        <div class="box7">
+            <md-input></md-input>
+        </div>
+    </div>
+
+
+    <div>
+        <md-button [isFlat]="'true'" [text]="'新增'"></md-button>
+    </div>
+</div>

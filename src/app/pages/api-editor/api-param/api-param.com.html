@@ -1,0 +1,12 @@
+<div>
+    <label>API请求参数 : </label>
+
+    <div *ngFor="let p of this.param; let i = index;" >
+        <api-param-item [param]="p"></api-param-item>
+        <i class="fa fa-close" (click)="HandleParamDeleteBtnClick(i)"></i>
+    </div>
+    <div>
+        <md-button [isFlat]="true" [text]="'添加'" (click)="HandleParamAddBtnClick()"></md-button>
+
+    </div>
+</div>

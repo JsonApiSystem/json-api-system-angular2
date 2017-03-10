@@ -11,11 +11,19 @@
         </div>
     </div>
     <div class="box-api-item" *ngFor="let api of this.apiList; let i = index;">
-        <api-item [api]="api"></api-item>
+        <api-item [api]="api" (OnApiDeleteSuccess)="OnApiDeleteSuccess()"></api-item>
+    </div>
+    <div class="box-api-item" >
+        <api-new #apiNew
+                 [projectId]="projectId"
+                 [groupId]="apiGroup.id"
+                 (OnApiCreateSuccess)="OnApiCreateSuccess()"
+
+        ></api-new>
     </div>
 
     <div class="t-r">
-        <md-button [text]="'添加'" [isFlat]="true" (click)="OnAddBtnClick()"></md-button>
-        <md-button [text]="'删除'" [isFlat]="true" (click)="OnDeleteBtnClick()"></md-button>
+        <md-button [text]="'添加'" [isFlat]="true" (click)="HandleAddBtnClick()"></md-button>
+        <md-button [text]="'删除'" [isFlat]="true" (click)="HandleDeleteBtnClick()"></md-button>
     </div>
 </div>

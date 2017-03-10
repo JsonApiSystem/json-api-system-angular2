@@ -9,7 +9,7 @@ export class InputComp {
     @Input() type: string = 'text'
     @Input() placeholder: string = '请输入内容'
     @Input() iconRight: string
-    value: string
+    @Input() value: string
     isRight: number = 1
 
 

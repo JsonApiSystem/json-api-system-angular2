@@ -1,5 +1,5 @@
-.page-test{
-    background-color: #ffffff;
+.page-test {
+    background-color: #eeeeee;
     width: 100%;
     height: 100%;
     font-size: 0;
@@ -7,7 +7,8 @@
     box-sizing: border-box;
     z-index: 99999;
 }
-.box-api-list{
+
+.box-api-list {
     font-size: 14px;
     display: inline-block;
     width: 15%;
@@ -16,7 +17,8 @@
     box-sizing: border-box;
     vertical-align: top;
 }
-.box-task{
+
+.box-task {
 
     font-size: 14px;
     display: inline-block;
@@ -27,7 +29,8 @@
     vertical-align: top;
 
 }
-.box-back{
+
+.box-back {
     text-align: center;
     width: 5%;
     height: 40px;
@@ -35,11 +38,43 @@
     color: #888888;
     display: inline-block;
 }
-.box-result{
+
+.box-result {
+    font-size: 14px;
     width: 50%;
     display: inline-block;
     height: 100%;
     padding: 10px;
     box-sizing: border-box;
     vertical-align: top;
+}
+
+.api-title {
+    line-height: 24px;
+}
+
+.box-content {
+    padding: 10px;
+}
+
+.box-api-info {
+    margin-bottom: 10px;
+}
+
+.api-title {
+    line-height: 24px;
+}
+
+.api-summary {
+    color: #aaaaaa;
+    font-size: 12px;
+}
+
+.api-test-name {
+    line-height: 50px;
+}
+
+.box-api-test-param {
+    padding-left: 10px;
+    box-sizing: border-box;
 }

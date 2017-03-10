@@ -1,16 +1,22 @@
 <div class="page-test">
     <div class="box-api-list">
-        <div *ngFor="let api of this.apiList; let i = index;">{{api.name}}</div>
+        <div *ngFor="let api of this.apiList; let i = index;"
+             class="box-api-info"
+             (click)="HandleTestClick(api.id)">
+            <div class="box-content">
+                <p class="api-name">{{api.name}}</p>
+                <p class="api-summary">{{api.summary}}</p>
+            </div>
+        </div>
     </div>
     <div class="box-task">
-        <div>666</div>
-        <div>666</div>
-        <div>666</div>
-        <div>666</div>
-        <div>666</div>
-        <div>666</div>
+        <test-task #testTask></test-task>
+        <test-task-new  #testTaskNew></test-task-new>
     </div>
     <div class="box-result">
-
+        <div>
+            <p>成功</p>
+            <p>成功</p>
+        </div>
     </div>
 </div>

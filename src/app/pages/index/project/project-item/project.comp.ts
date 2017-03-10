@@ -8,7 +8,7 @@ import {AlertService, AlertListener} from "../../../../__module/component/alert/
     styleUrls: ['./project.comp.css']
 })
 export class ProjectComp implements AlertListener {
-    OnSureBtnClickListener(): void {
+    OnAlertSureBtnClickListener(): void {
 
     }
 

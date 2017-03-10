@@ -1,0 +1,8 @@
+<div class="comp-api-new" *ngIf="this.isShow">
+    <md-input #nameInput></md-input>
+    <md-input #summaryInput></md-input>
+    <div class="t-r">
+        <md-button #sureBtn [text]="'确认'" [isFlat]="true" (click)="HandleSureBtnClick()"></md-button>
+        <md-button [text]="'取消'" [isFlat]="true" (click)="HandleCancelBtnClick()"></md-button>
+    </div>
+</div>

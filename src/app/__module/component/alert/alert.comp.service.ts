@@ -25,10 +25,10 @@ export class AlertService {
 
     OnSureListener() {
         this.hide()
-        this.alertListener.OnSureBtnClickListener()
+        this.alertListener.OnAlertSureBtnClickListener()
     }
 
 }
 export interface AlertListener {
-    OnSureBtnClickListener(): void;
+    OnAlertSureBtnClickListener(): void;
 }

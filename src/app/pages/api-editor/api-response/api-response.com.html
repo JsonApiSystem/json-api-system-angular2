@@ -1,0 +1,30 @@
+<div>
+    <label>API请求参数 : </label>
+    <table>
+        <tr>
+            <td> 参数名称</td>
+            <td> 参数类型</td>
+            <td> 参数解释</td>
+        </tr>
+        <tr *ngFor="let p of this.response; let i = index;">
+            <td>
+                <md-input [value]="p.name"></md-input>
+            </td>
+            <td>
+                <md-input [value]="p.type"></md-input>
+            </td>
+            <td>
+            </td>
+            <td>
+                <md-input [value]="p.mark"></md-input>
+            </td>
+            <td><i class="fa fa-close" (click)="HandleResponseDeleteBtnClick(i)"></i></td>
+
+        </tr>
+        <tr>
+            <td>
+                <md-button [isFlat]="true" [text]="'添加'" (click)="HandleResponseAddBtnClick()"></md-button>
+            </td>
+        </tr>
+    </table>
+</div>

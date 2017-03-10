@@ -89,18 +89,12 @@ export class ApiEditorService extends ApiEditorListener {
     }
 
     save(context: any, param: any) {
-        // console.log(this.apiDetail)
-        // let data = this.apiDetail
-        // delete data['param']
-        // data['param'] = param
-        // this.apiDetail['param']=param
+        console.log(this.apiDetail)
+        return;
         // var data = this.apiDetail
         // data['param'] = JSON.stringify(this.apiDetail['param'])
         // data['response']=JSON.stringify(this.apiDetail['response'])
-        let d=this.apiDetail
-        d['params']=param
-        this.apiModel.httpApiUpdate(d, context)
-
+        // this.apiModel.httpApiUpdate(data, context)
     }
 
     addResponse() {

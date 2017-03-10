@@ -23,8 +23,14 @@ export const API = {
 
 
     API_GET: ROOT_API + 'api/get',
+    API_DETAIL: ROOT_API + 'api/detail',
     API_CREATE: ROOT_API + 'api/create',
     API_UPDATE: ROOT_API + 'api/update',
     API_DELETE: ROOT_API + 'api/delete',
+
+    TEST_GET: ROOT_API + 'test/get',
+    TEST_CREATE: ROOT_API + 'test/create',
+    TEST_UPDATE: ROOT_API + 'test/update',
+    TEST_DELETE: ROOT_API + 'test/delete',
 
 }

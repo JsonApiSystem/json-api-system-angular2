@@ -30,6 +30,22 @@ export class ApiModel {
         })
     }
 
+    httpApiDetail(data: any = {id: 0}, context: any) {
+        this.httpService.post(API.API_DETAIL, {
+            id: data.id,
+        }, {
+            success(data){
+                context.OnApiDetailSuccessListener(data)
+            },
+            failure(code){
+                context.OnApiDetailFailureListener(code)
+            },
+            error(){
+
+            }
+        })
+    }
+
     httpApiCreate(data: any = {
         group_id: 0,
         project_id: 0,
@@ -37,8 +53,8 @@ export class ApiModel {
         summary: '',
         url: '',
         method: 0
-    }, success: any, failure: any) {
-        this.httpService.post(API.API_USER_LOGIN, {
+    }, context: any) {
+        this.httpService.post(API.API_CREATE, {
             group_id: data.group_id,
             project_id: data.project_id,
             name: data.name,
@@ -48,12 +64,11 @@ export class ApiModel {
 
         }, {
             success(data){
-                success()
-                console.log(data)
+                context.OnApiCreateSuccessListener(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                context.OnApiCreateFailureListener(code)
+
             },
             error(){
                 console.log()
@@ -69,23 +84,25 @@ export class ApiModel {
         name: '',
         summary: '',
         url: '',
+        params:'',
+        response:'',
         method: 0
-    }, success: any, failure: any) {
-        this.httpService.post(API.API_USER_REGISTER, {
+    }, context:any) {
+        this.httpService.post(API.API_UPDATE, {
             id: data.id,
             group_id: data.group_id,
             name: data.name,
             summary: data.summary,
             url: data.url,
+            param:data.params,
+            response:data.response,
             method: data.method
         }, {
             success(data){
-                success()
-                console.log(data)
+                context.OnApiUpdateSuccessListener(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                context.OnApiUpdateFailureListener(code)
             },
             error(){
                 console.log()
@@ -94,17 +111,15 @@ export class ApiModel {
         })
     }
 
-    httpApiDelete(data: any = {id: 0}, success: any, failure: any) {
-        this.httpService.post(API.API_USER_LOGIN, {
+    httpApiDelete(data: any = {id: 0}, context: any) {
+        this.httpService.post(API.API_DELETE, {
             id: data.id,
         }, {
             success(data){
-                success()
-                console.log(data)
+                context.OnApiDeleteSuccessListener(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                context.OnApiDeleteFailureListener(code)
             },
             error(){
                 console.log()
@@ -112,6 +127,8 @@ export class ApiModel {
             }
         })
     }
+
+
 
 }
 
@@ -119,4 +136,27 @@ export interface ApiGetListener {
     OnApiGetSuccessListener(data: any): void
     OnApiGetFailureListener(code: any): void
     OnApiGetErrorListener(): void
+}
+
+export interface ApiCreateListener {
+    OnApiCreateSuccessListener(data: any): void
+    OnApiCreateFailureListener(code: any): void
+    OnApiCreateErrorListener(): void
+}
+export interface ApiUpdateListener {
+    OnApiUpdateSuccessListener(data: any): void
+    OnApiUpdateFailureListener(code: any): void
+    OnApiUpdateErrorListener(): void
+}
+
+export interface ApiDetailListener {
+    OnApiDetailSuccessListener(data: any): void
+    OnApiDetailFailureListener(code: any): void
+    OnApiDetailErrorListener(): void
+}
+
+export interface ApiDeleteListener {
+    OnApiDeleteSuccessListener(data: any): void
+    OnApiDeleteFailureListener(code: any): void
+    OnApiDeleteErrorListener(): void
 }

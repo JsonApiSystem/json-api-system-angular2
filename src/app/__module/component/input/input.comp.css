@@ -38,7 +38,6 @@
 .md-input {
     border: 0;
     border-bottom: 3px #eeeeee solid;
-    padding-left: 30px;
     width: 100%;
     font-size: 16px;
     line-height: 32px;
@@ -50,4 +49,7 @@
 
 .md-input:focus {
     border-bottom: 3px #2196F3 solid;
+}
+.md-padding{
+    padding-left: 30px;
 }
