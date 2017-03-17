@@ -13,6 +13,11 @@ export class ApiPageService extends AppPageService {
             project_id: id
         }, this.context)
     }
+
+    init(id: any,context:any) {
+        this.setContext(context)
+        this.getApiGroup(id)
+    }
 }
 
 export class ApiPageListener implements ApiGroupGetListener {

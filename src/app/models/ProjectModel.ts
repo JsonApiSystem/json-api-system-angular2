@@ -7,20 +7,32 @@
 import {Injectable} from '@angular/core'
 import {MdHttpService} from "../__module/http/MdHttpService";
 import {API}from './ApiConfig'
+import {Model} from "./Model";
+import {UserLocalStorage} from "../utils/UserLocalStorage";
 @Injectable()
-export class ProjectModel {
-    constructor(private httpService: MdHttpService) {
+export class ProjectModel extends Model {
+    data: any
 
+    constructor(private httpService: MdHttpService,
+    private userLocalStorage:UserLocalStorage) {
+        super()
     }
 
+    httpProjectGet(data: any = {user_id: '', page_index: 1, page_size: 999}, context: any, force: boolean = false) {
+        var mContext = this.context
+        if (!force && this.data) {
+            context.OnProjectGetSuccess(this.data)
+            return
+        }
+        console.log('here', this.data)
 
-    httpProjectGet(data: any = {user_id: '', page_index: 1, page_size: 999}, context:any) {
         this.httpService.post(API.API_PROJECT_GET, {
             user_id: data.user_id,
             page_index: data.page_index,
             page_size: data.page_size,
         }, {
             success(data){
+                mContext.data = data
                 context.OnProjectGetSuccess(data)
             },
             failure(code){
@@ -33,23 +45,20 @@ export class ProjectModel {
         })
     }
 
-    httpProjectCreate(data: any = {name: '', summary: '', icon: '', user_id: 0}, success: any, failure: any) {
-        this.httpService.post(API.API_USER_LOGIN, {
+    httpProjectCreate(data: any = {name: '', summary: '', icon: '', user_id: 0}, context: any) {
+        this.httpService.post(API.API_PROJECT_CREATE, {
             name: data.name,
             summary: data.summary,
             icon: data.icon,
-            user_id: data.user_id
+            user_id: this.userLocalStorage.getUserId()
         }, {
             success(data){
-                success()
-                console.log(data)
+                context.OnProjectCreateSuccess(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                context.OnProjectCreateFailure(code)
             },
             error(){
-                console.log()
 
             }
         })
@@ -77,17 +86,17 @@ export class ProjectModel {
         })
     }
 
-    httpProjectDelete(data: any = {id: 0}, success: any, failure: any) {
-        this.httpService.post(API.API_USER_LOGIN, {
+    httpProjectDelete(data: any = {id: 0}, context: any, index: number) {
+        var mContext = this.context
+        this.httpService.post(API.API_PROJECT_DELETE, {
             id: data.id,
         }, {
             success(data){
-                success()
-                console.log(data)
+                mContext.data.splice(index, 1)
+                context.OnProjectDeleteSuccess(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                context.OnProjectDeleteFailure(code)
             },
             error(){
                 console.log()
@@ -108,6 +117,34 @@ export abstract class ProjectModelListener {
     }
 
     OnProjectGetError() {
+
+    }
+}
+
+export abstract class ProjectDeleteListener {
+    OnProjectDeleteSuccess(data: any) {
+
+    }
+
+    OnProjectDeleteFailure(code: any) {
+
+    }
+
+    OnProjectDeleteError() {
+
+    }
+}
+
+export abstract class ProjectCreateListener {
+    OnProjectCreateSuccess(data: any) {
+
+    }
+
+    OnProjectCreateFailure(code: any) {
+
+    }
+
+    OnProjectCreateError() {
 
     }
 }

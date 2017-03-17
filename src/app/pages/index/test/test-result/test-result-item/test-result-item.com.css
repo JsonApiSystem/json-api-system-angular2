@@ -1,0 +1,18 @@
+.com-test-result-item {
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.title {
+    border-bottom: 1px solid #eeeeee;
+    line-height: 30px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.title span {
+    font-size: 16px;
+    color: #555555;
+}

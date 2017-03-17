@@ -36,6 +36,14 @@ import {TestTaskNewComp} from "./pages/index/test/test-task/test-task-new/test-t
 import {ApiResponseComp} from "./pages/api-editor/api-response/api-response.com";
 import {ApiParamComp} from "./pages/api-editor/api-param/api-param.com";
 import {ApiParamItemComp} from "./pages/api-editor/api-param/api-param-item/api-param-item.com";
+import {TestTaskNewParamComp} from "./pages/index/test/test-task/test-task-new/test-task-new-param/test-task-new-param.comp";
+import {TestTaskService} from "./pages/index/test/test-task/test-task.service";
+import {TestModel} from "./models/TestModel";
+import {TestTaskItemComp} from "./pages/index/test/test-task/test-task-item/test-task-item.comp";
+import {TestResultComp} from "./pages/index/test/test-result/test-result.com";
+import {TestResultItemComp} from "./pages/index/test/test-result/test-result-item/test-result-item.com";
+import {TestResultService} from "./pages/index/test/test-result/test-result.service";
+import {TestReportModel} from "./models/TestReportModel";
 
 const appRoutes: Routes = [
 
@@ -80,13 +88,17 @@ const appRoutes: Routes = [
         ProjectModel,
         ApiGroupModel,
         ApiModel,
+        TestModel,
+        TestReportModel,
         UserLocalStorage,
         LoginPageService,
         ProjectNewModalService,
         ProjectPageService,
         ApiPageService,
         ApiGroupService,
-        TestPageService
+        TestPageService,
+        TestTaskService,
+        TestResultService
     ],
     declarations: [
         AppPage,
@@ -106,7 +118,11 @@ const appRoutes: Routes = [
         TestTaskNewComp,
         ApiParamComp,
         ApiResponseComp,
-        ApiParamItemComp
+        ApiParamItemComp,
+        TestTaskNewParamComp,
+        TestTaskItemComp,
+        TestResultComp,
+        TestResultItemComp
     ],
     bootstrap: [AppPage]
 })

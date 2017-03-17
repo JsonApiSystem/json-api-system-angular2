@@ -2,53 +2,16 @@
     <card>
         <div  class="box-api-editor-content">
             <div>
-                <label >API名称 : </label>
-                <md-input [type]="'text'"></md-input>
+                <label >项目名称 : </label>
+                <md-input [type]="'text'" #nameInput></md-input>
             </div>
             <div>
-                <label >API简介 : </label>
-                <md-input [type]="'text'"></md-input>
+                <label >项目简介 : </label>
+                <md-input [type]="'text'" #nameSummary></md-input>
             </div>
             <div>
-                <label >API方法 : </label>
-                <md-input [type]="'text'"></md-input>
-            </div>
-            <div>
-                <label >API请求地址 : </label>
-                <md-input [type]="'text'"></md-input>
-
-            </div>
-            <div>
-                <label >API请求参数 : </label>
-                <table>
-                   <tr>
-                       <td> <md-input></md-input></td>
-                       <td> <md-input></md-input></td>
-                       <td> <md-input></md-input></td>
-                       <td> <md-input></md-input></td>
-                   </tr>
-                </table>
-            </div>
-            <div>
-                <label >API返回参数 : </label>
-                <table>
-                    <tr>
-                        <td> 参数名称</td>
-                        <td> 参数类型</td>
-                        <td> 参数解释</td>
-                    </tr>
-                    <tr>
-                        <td> <md-input></md-input></td>
-                        <td> <md-input></md-input></td>
-                        <td> <md-input></md-input></td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <label >API备注 : </label>
-                <md-textarea>
-
-                </md-textarea>
+                <label >项目根地址 : </label>
+                <md-input [type]="'text'" #name></md-input>
             </div>
             <div class="t-r">
                 <md-button [text]="'保存'"  [isFlat]="true"  (click)="OnSaveBtnClick()"></md-button>

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {AlertService} from "../../../__module/component/alert/alert.comp.service";
+import {AlertService, AlertListener} from "../../../__module/component/alert/alert.comp.service";
 import {ProjectModel, ProjectModelListener} from "../../../models/ProjectModel";
 import {ProjectPageListener, ProjectPageService} from "./project.service";
 import {ProjectNewModalService} from "../../project-new-modal/project-new.modal.service";
@@ -17,14 +17,31 @@ export class ProjectPage extends ProjectPageListener implements OnInit {
     }
 
     OnProjectGetSuccess(data: any) {
-        this.projectList=data
+        console.log(data)
+        this.projectList = data
     }
 
     OnProjectGetFailure(code: any) {
         this.smallToastService.showToast('获取项目列表失败', SmallToastService.STYLE_ERROR)
     }
 
-    projectList: any=''
+    OnProjectDeleteSuccess() {
+        this.projectPageService.init(this)
+    }
+
+    OnProjectDeleteFailure(code: number) {
+
+    }
+
+    OnProjectCreateSuccess(data: any) {
+        this.projectPageService.init(this,true)
+    }
+
+    OnProjectCreateFailure(code: number) {
+
+    }
+
+    projectList: any = ''
 
 
     constructor(private router: Router,
@@ -32,13 +49,13 @@ export class ProjectPage extends ProjectPageListener implements OnInit {
                 private projectNewModalService: ProjectNewModalService,
                 private projectPageService: ProjectPageService) {
         super()
-        this.projectPageService.context = this
-        this.projectPageService.getProject();
+        this.projectPageService.init(this);
 
     }
 
-    HandleProjectClick(id:any) {
-        this.router.navigate(['index/api',id])
+    HandleProjectClick(id: any) {
+        console.log('555')
+        this.router.navigate(['index/api', id])
     }
 
     HandleProjectNewBtnClick() {

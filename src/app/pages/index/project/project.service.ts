@@ -6,7 +6,10 @@
  */
 
 import {Injectable} from "@angular/core";
-import {ProjectModelListener, ProjectModel} from "../../../models/ProjectModel";
+import {
+    ProjectModelListener, ProjectModel, ProjectDeleteListener,
+    ProjectCreateListener
+} from "../../../models/ProjectModel";
 import {AppPageService} from "../../app.page.service";
 import {UserLocalStorage} from "../../../utils/UserLocalStorage";
 @Injectable()
@@ -18,16 +21,42 @@ export class ProjectPageService extends AppPageService {
         super();
     }
 
-    getProject() {
+    init(context: any,force:boolean=false) {
+        this.context = context
         this.projectModel.httpProjectGet(
             {user_id: this.userLocalStorage.getUserId(), page_index: 1, page_size: 999}
-            , this.context)
+            , this.context,force)
     }
 
+    deleteProject(data: any) {
+        this.projectModel.httpProjectDelete({
+            id: data.id
+        }, this.context, data.index)
+    }
 
+    createProject(data: any) {
+        this.projectModel.httpProjectCreate(data,this.context)
+    }
 }
 
-export class ProjectPageListener implements ProjectModelListener {
+export class ProjectPageListener implements ProjectModelListener,ProjectDeleteListener,ProjectCreateListener {
+    OnProjectCreateSuccess(data: any) {
+    }
+
+    OnProjectCreateFailure(code: any) {
+    }
+
+    OnProjectCreateError() {
+    }
+    OnProjectDeleteSuccess(data: any) {
+    }
+
+    OnProjectDeleteFailure(code: any) {
+    }
+
+    OnProjectDeleteError() {
+    }
+
     OnProjectGetSuccess(data: any) {
 
     }

@@ -1,15 +1,5 @@
 <div>
-    <div class="comp-test-task">
-        <p class="test-name"
-           (click)="HandleTestTitleClick()"
-        >测试名称 <i class="fa fa-arrow-circle-down" ></i></p>
-        <div class="box-api-test-param" *ngIf="isShow">
-            <div *ngFor="let param of this.data; let i = index;">
-                <p style="width: 20%;display: inline-block">{{param.key}}</p>
-                <div style="width: 75% ;display: inline-block">
-                    <md-input [value]="param.value"></md-input>
-                </div>
-            </div>
-        </div>
+    <div class="comp-test-task" *ngFor="let task of this.testList; let i = index;">
+        <test-task-item [task]="task" ></test-task-item>
     </div>
 </div>

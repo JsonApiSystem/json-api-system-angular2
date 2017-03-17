@@ -18,7 +18,6 @@ export class ApiGroupService extends AppPageService {
         this.apiModel.httpApiGet({
             group_id: group_id
         }, this.context)
-
     }
 
 

@@ -32,5 +32,7 @@ export const API = {
     TEST_CREATE: ROOT_API + 'test/create',
     TEST_UPDATE: ROOT_API + 'test/update',
     TEST_DELETE: ROOT_API + 'test/delete',
+    TEST_RUN: ROOT_API + 'test/run',
 
+    TEST_REPORT_GET: ROOT_API + 'report/get'
 }

@@ -11,12 +11,14 @@ export class AlertService {
     private alertListener: AlertListener
     title: string;
     content: string;
+    data:any
 
-    show(title: string, content: string, alertListener: AlertListener) {
+    show(title: string, content: string, alertListener: AlertListener,data:any) {
         this.isShow = true
         this.title = title
         this.content = content
         this.alertListener = alertListener
+        this.data=data
     }
 
     hide() {
@@ -25,10 +27,10 @@ export class AlertService {
 
     OnSureListener() {
         this.hide()
-        this.alertListener.OnAlertSureBtnClickListener()
+        this.alertListener.OnAlertSureBtnClickListener(this.data)
     }
 
 }
 export interface AlertListener {
-    OnAlertSureBtnClickListener(): void;
+    OnAlertSureBtnClickListener(data:any): void;
 }

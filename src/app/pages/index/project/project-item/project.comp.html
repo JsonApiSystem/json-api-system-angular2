@@ -7,6 +7,6 @@
     </div>
     <div class="project-opration">
         <md-button [text]="'修改'" [isFlat]="true" (click)="HandleOnAlertBtnClick($event)"></md-button>
-        <md-button [text]="'删除'" [isFlat]="true" (click)="HandleOnDeleteBtnClick($event)"></md-button>
+        <md-button [text]="'删除'" [isFlat]="true" (click)="HandleOnDeleteBtnClick($event,project.id)"></md-button>
     </div>
 </card>

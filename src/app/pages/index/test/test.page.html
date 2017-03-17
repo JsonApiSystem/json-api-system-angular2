@@ -11,12 +11,11 @@
     </div>
     <div class="box-task">
         <test-task #testTask></test-task>
-        <test-task-new  #testTaskNew></test-task-new>
+        <test-task-new  #testTaskNew *ngIf="isAddShow" ></test-task-new>
+        <md-button  *ngIf="!isAddShow" #testAddBtn [isFlat]="'true'" [text]="'新增'" (click)="HandleTestAddBtnClick()"></md-button>
+
     </div>
     <div class="box-result">
-        <div>
-            <p>成功</p>
-            <p>成功</p>
-        </div>
+       <test-result></test-result>
     </div>
 </div>

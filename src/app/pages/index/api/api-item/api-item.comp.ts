@@ -42,8 +42,8 @@ export class ApiItemComp implements OnInit, AlertListener,ApiDeleteListener {
         this.apiEditorService.show(this.api.id)
     }
 
-    HandleDeleteBtnClick() {
-        this.alertService.show('确认删除', '确认删除该 api?', this)
+    HandleDeleteBtnClick(id: any) {
+        this.alertService.show('确认删除', '确认删除该 api?', this, id)
     }
 
 }

@@ -1,0 +1,6 @@
+<div class="box-container" *ngFor="let p of this.param; let i = index;">
+    <p class="box3">{{p.key}}</p>
+    <div class="box7">
+        <md-input [value]="p.value"></md-input>
+    </div>
+</div>

@@ -15,7 +15,7 @@ export class UserModel extends Model {
 
     constructor(private httpService: MdHttpService,
                 protected smallToastService: SmallToastService) {
-        super(smallToastService)
+        super()
     }
 
     static USER_LOGIN_PASSWORD_USERNAME_ERROR = 201

@@ -6,8 +6,12 @@ import {Input, Component} from '@angular/core';
 })
 export class TextareaComp {
 
+    @Input()value:any
     constructor() {
 
+    }
+    getValue(){
+        return this.value
     }
 
 

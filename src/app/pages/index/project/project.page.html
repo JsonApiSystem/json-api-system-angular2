@@ -2,28 +2,28 @@
     <div class="box-project-group">
         <h2 class="group-title">我的项目 <i class="fa  fa-plus" (click)="HandleProjectNewBtnClick()"></i></h2>
         <div class="box-project" (click)="HandleProjectClick(p.id)" *ngFor="let p of this.projectList; let i = index;">
-            <project-item [project]="p">
+            <project-item [project]="p" [index]="i">
             </project-item>
         </div>
     </div>
 
     <div class="box-project-group">
         <h2 class="group-title">我参与的项目</h2>
-        <div class="box-project">
-            <project-item>
-            </project-item>
-        </div>
-        <div class="box-project">
-            <project-item>
-            </project-item>
-        </div>
-        <div class="box-project">
-            <project-item>
-            </project-item>
-        </div>
-        <div class="box-project">
-            <project-item>
-            </project-item>
-        </div>
+        <!--<div class="box-project">-->
+            <!--<project-item>-->
+            <!--</project-item>-->
+        <!--</div>-->
+        <!--<div class="box-project">-->
+            <!--<project-item>-->
+            <!--</project-item>-->
+        <!--</div>-->
+        <!--<div class="box-project">-->
+            <!--<project-item>-->
+            <!--</project-item>-->
+        <!--</div>-->
+        <!--<div class="box-project">-->
+            <!--<project-item>-->
+            <!--</project-item>-->
+        <!--</div>-->
     </div>
 </div>

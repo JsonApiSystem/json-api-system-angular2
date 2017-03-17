@@ -1,0 +1,26 @@
+<div>
+    <div class="box7">
+        <p class="test-name"
+           (click)="HandleTestTitleClick(task.id)"
+        >{{task.name}} <i class="fa fa-arrow-circle-down"></i></p>
+        <p class="text-summary">{{task.summary}}</p>
+    </div>
+    <div class="box2">
+        <md-button [isFlat]="true" [text]="'RUN'" (click)="HandleRunBtnClick(task.id)"></md-button>
+    </div>
+
+    <div *ngIf="isShow">
+        <div class="box-api-test-param">
+            <div *ngFor="let param of task.params; let i = index;">
+                <p style="width: 20%;display: inline-block">{{param.key}}</p>
+                <div style="width: 75% ;display: inline-block">
+                    <md-input [value]="param.value"></md-input>
+                </div>
+            </div>
+        </div>
+        <div>
+            <md-button [text]="'修改'" [isFlat]="true" (click)="HandleSaveBtnClick()"></md-button>
+            <md-button [text]="'删除'" [isFlat]="true" (click)="HandleDeleteBtnClick()"></md-button>
+        </div>
+    </div>
+</div>

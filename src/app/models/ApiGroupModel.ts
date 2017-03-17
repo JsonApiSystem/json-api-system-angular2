@@ -7,14 +7,30 @@
 import {Injectable} from '@angular/core'
 import {MdHttpService} from "../__module/http/MdHttpService";
 import {API}from './ApiConfig'
+import {Model} from "./Model";
 @Injectable()
-export class ApiGroupModel {
-    constructor(private httpService: MdHttpService) {
+export class ApiGroupModel extends Model {
+    data: any
 
+    constructor(private httpService: MdHttpService) {
+        super()
     }
 
+    setData(projectId: number, data: any) {
+        for (let i = 0; i < this.data.length; i++) {
+            if (this.data[i]['project_id'] == projectId) {
+                this.data[i]['group'] = data
+                return
+            }
+        }
+        this.data[this.data.length] = {
+            project_id: projectId,
+            group: data
+        }
+    }
 
-    httpApiGroupGet(data: any = {project_id: 0}, context:any) {
+    httpApiGroupGet(data: any = {project_id: 0}, context: any) {
+        var mContext: any
         this.httpService.post(API.API_GROUP_GET, {
             project_id: data.project_id,
         }, {
@@ -22,7 +38,7 @@ export class ApiGroupModel {
                 context.OnApiGroupGetSuccessListener(data)
             },
             failure(code){
-               context.OnApiGroupGetFailureListener(code)
+                context.OnApiGroupGetFailureListener(code)
             },
             error(){
                 console.log()
@@ -30,6 +46,7 @@ export class ApiGroupModel {
             }
         })
     }
+
 
     httpApiGroupCreate(data: any = {project_id: 0, name: '', summary: '', icon: ''}, success: any, failure: any) {
         this.httpService.post(API.API_USER_LOGIN, {
@@ -97,7 +114,7 @@ export class ApiGroupModel {
 }
 
 export interface ApiGroupGetListener {
-    OnApiGroupGetSuccessListener(data:any): void
-    OnApiGroupGetFailureListener(code:any): void
+    OnApiGroupGetSuccessListener(data: any): void
+    OnApiGroupGetFailureListener(code: any): void
     OnApiGroupGetErrorListener(): void
 }

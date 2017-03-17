@@ -125,9 +125,12 @@ button:disabled {
     width: 10%;
     font-size: 14px;
     display: inline-block;
+    vertical-align: middle;
+
 }
 
 .box2 {
+    vertical-align: middle;
     width: 20%;
     font-size: 14px;
     display: inline-block;
@@ -137,12 +140,16 @@ button:disabled {
 .box3 {
     width: 30%;
     font-size: 14px;
+    vertical-align: middle;
+
     display: inline-block;
 
 }
 
 .box4 {
     width: 40%;
+    vertical-align: middle;
+
     font-size: 14px;
     display: inline-block;
 
@@ -150,6 +157,8 @@ button:disabled {
 
 .box5 {
     width: 50%;
+    vertical-align: middle;
+
     font-size: 14px;
     display: inline-block;
 
@@ -157,6 +166,8 @@ button:disabled {
 
 .box6 {
     width: 60%;
+    vertical-align: middle;
+
     font-size: 14px;
     display: inline-block;
 
@@ -164,6 +175,8 @@ button:disabled {
 
 .box7 {
     width: 70%;
+    vertical-align: middle;
+
     font-size: 14px;
     display: inline-block;
 
@@ -172,6 +185,8 @@ button:disabled {
 .box8 {
     width: 80%;
     font-size: 14px;
+    vertical-align: middle;
+
     display: inline-block;
 
 }
@@ -179,12 +194,16 @@ button:disabled {
 .box9 {
     width: 90%;
     font-size: 14px;
+    vertical-align: middle;
+
     display: inline-block;
 
 }
 
 .box10 {
     width: 100%;
+    vertical-align: middle;
+
     font-size: 14px;
     display: inline-block;
 

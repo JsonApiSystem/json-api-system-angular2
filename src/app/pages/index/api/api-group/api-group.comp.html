@@ -1,13 +1,16 @@
 <div class="com-api-group">
     <div class="box-api-group-summary">
         <p class="api-num"><span class="api-num-active">2</span>/21</p>
-        <div class="box-group-summary">
+        <div class="box-group-summary" *ngIf="this.apiGroup.name!=undefined" >
             <p class="group-title">{{this.apiGroup.name}}</p>
             <p class="group-summary"> {{this.apiGroup.summary}}</p>
-
+        </div>
+        <div class="box-group-summary" *ngIf="this.apiGroup.name==undefined">
+            <p class="group-title"><md-input></md-input></p>
         </div>
         <div  class="box-group-test t-r">
-            <md-button [text]="'测试'" [isFlat]="true" (click)="HandleTestClick(this.apiGroup.id)" ></md-button>
+            <md-button [text]="'测试'" [isFlat]="true" (click)="HandleTestClick(this.apiGroup.id)" *ngIf="this.apiGroup.name!=undefined"></md-button>
+            <md-button [text]="'保存'" [isFlat]="true" (click)="HandleTestClick(this.apiGroup.id)" *ngIf="this.apiGroup.name==undefined"></md-button>
         </div>
     </div>
     <div class="box-api-item" *ngFor="let api of this.apiList; let i = index;">

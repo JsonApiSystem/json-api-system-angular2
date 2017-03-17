@@ -5,6 +5,7 @@ import {Location} from '@angular/common';
 import {Http} from "@angular/http";
 import {TestTaskComp} from "./test-task/test-task.comp";
 import {TestTaskNewComp} from "./test-task/test-task-new/test-task-new.comp";
+import {ButtonComp} from "../../../__module/component/button/button.comp";
 @Component({
     selector: 'test-page',
     templateUrl: './test.page.html',
@@ -35,8 +36,10 @@ export class TestPage extends TestPageListener implements OnInit {
 
     @ViewChild('testTask') testTask: TestTaskComp
     @ViewChild('testTaskNew') testTaskNew: TestTaskNewComp
+    @ViewChild('testAddBtn') testAddBtn: ButtonComp
 
     apiList: any
+    isAddShow: boolean=false
 
     constructor(private testPageService: TestPageService,
                 private router: Router,
@@ -48,6 +51,10 @@ export class TestPage extends TestPageListener implements OnInit {
                 this.testPageService.init(this, id)
             });
 
+    }
+
+    HandleTestAddBtnClick() {
+        this.isAddShow = true
     }
 
     HandleTestClick(id: number) {

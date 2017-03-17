@@ -6,16 +6,16 @@
             </div>
             <div class="project-new-content">
                 <div>
-                    <md-input></md-input>
+                    <md-input #nameInput></md-input>
                 </div>
                 <div>
-                    <md-textarea></md-textarea>
+                    <md-textarea #summaryInput></md-textarea>
                 </div>
             </div>
 
             <div class="project-new-operation" >
-                <md-button [text]="'创 建'" (click)="HandleProjectNewClick()"></md-button>
-                <md-button [text]="'取 消'" [isFlat]="true" (click)="this.projectNewModalService.hide()"></md-button>
+                <md-button [text]="'创 建'" (click)="HandleProjectNewModalCreateClick()"></md-button>
+                <md-button [text]="'取 消'" [isFlat]="true" (click)="HandleProjectNewModalCancelClick()"></md-button>
             </div>
         </card>
     </div>

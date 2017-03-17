@@ -8,26 +8,9 @@ import {SmallToastComponent} from "../__module/component/toast/small-toast.compo
  * SUMMARY :
  */
 
-@Injectable()
 export class Model {
-    static ERROR_NETWORK = 500
-
-    constructor(protected smallToastService: SmallToastService) {
-
-    }
-
-    protected OnErrorListener(code: number) {
-        switch (code) {
-            case Model.ERROR_NETWORK: {
-                this.smallToastService.showToast('网路错误', SmallToastService.STYLE_ERROR);
-                break;
-            }
-            default:{
-                this.smallToastService.showToast('网路错误', SmallToastService.STYLE_ERROR);
-                break;
-            }
-        }
-
-
+    context:any
+    constructor() {
+        this.context=this
     }
 }

@@ -6,14 +6,19 @@
  */
 
 import {Injectable} from "@angular/core";
-import {ApiGetListener, ApiModel, ApiDetailListener} from "../../../models/ApiModel";
+import {
+    ApiGetListener, ApiModel, ApiDetailListener, ApiUpdateListener,
+    ApiDeleteListener
+} from "../../../models/ApiModel";
 import {AppPage} from "../../app.page";
 import {AppPageService} from "../../app.page.service";
+import {TestUpdateListener, TestDeleteListener, TestModel} from "../../../models/TestModel";
 @Injectable()
 export class TestPageService extends AppPageService {
     group: any
 
-    constructor(private apiModel: ApiModel) {
+    constructor(private apiModel: ApiModel,
+                private testModel: TestModel) {
         super()
     }
 
@@ -28,8 +33,49 @@ export class TestPageService extends AppPageService {
     getApiDetail(id: any) {
         this.apiModel.httpApiDetail({id: id}, this.context);
     }
+
+
+    deleteTest(id: any, context: any) {
+        this.testModel.httpTestDelete({
+            id: id
+        }, context)
+    }
+
+    runTest(taskId: any) {
+        this.testModel.httpTestRun({
+            id:taskId
+        })
+    }
 }
-export class TestPageListener implements ApiGetListener,ApiDetailListener {
+export class TestPageListener implements ApiGetListener,ApiDetailListener,TestUpdateListener,TestDeleteListener {
+    OnTestUpdateSuccess(data: any): void {
+    }
+
+    OnTestUpdateFailure(code: any): void {
+    }
+
+    OnTestUpdateError(): void {
+    }
+
+    OnTestCreateSuccess(data: any): void {
+    }
+
+    OnTestCreateFailure(code: any): void {
+    }
+
+    OnTestCreateError(): void {
+    }
+
+    OnTestDeleteSuccess(data: any): void {
+    }
+
+    OnTestDeleteFailure(code: any): void {
+    }
+
+    OnTestDeleteError(): void {
+    }
+
+
     OnApiDetailSuccessListener(data: any): void {
 
     }
