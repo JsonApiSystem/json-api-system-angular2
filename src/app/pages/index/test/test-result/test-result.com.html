@@ -1,5 +1,3 @@
-<div style="overflow: auto">
-    <div *ngFor="let task of this.testReportService.data; let i = index;" style="border: 1px solid #ffffff;margin-top: 10px">
-        <test-result-item  *ngFor="let t of task; let i = index;" [data]="t"></test-result-item>
-    </div>
+<div>
+    <test-result-item *ngFor="let report of this.testReportService.data; let i = index;" [report]="report" [index]="i"></test-result-item>
 </div>

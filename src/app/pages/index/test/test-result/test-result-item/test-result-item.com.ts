@@ -8,10 +8,10 @@ import {Http} from "@angular/http";
     styleUrls: ['./test-result-item.com.css']
 })
 export class TestResultItemComp {
-    @Input() data: any
+    @Input() report: any = {}
+    @Input() index: any
 
     constructor() {
-
     }
 
 

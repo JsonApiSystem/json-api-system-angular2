@@ -10,7 +10,7 @@ import {API}from './ApiConfig'
 import {Model} from "./Model";
 @Injectable()
 export class ApiGroupModel extends Model {
-    data: any
+    data: any=[]
 
     constructor(private httpService: MdHttpService) {
         super()
@@ -19,7 +19,7 @@ export class ApiGroupModel extends Model {
     setData(projectId: number, data: any) {
         for (let i = 0; i < this.data.length; i++) {
             if (this.data[i]['project_id'] == projectId) {
-                this.data[i]['group'] = data
+                this.data[i]['groups'] = data
                 return
             }
         }
@@ -28,13 +28,30 @@ export class ApiGroupModel extends Model {
             group: data
         }
     }
+    getData(project_id:number){
+        for (let i = 0; i < this.data.length; i++) {
+            if (this.data[i]['project_id'] == project_id) {
+                return this.data[i]['groups']
+            }
+        }
+        return null
+    }
 
-    httpApiGroupGet(data: any = {project_id: 0}, context: any) {
+
+    httpApiGroupGet(data: any = {project_id: 0}, context: any,force:boolean=false) {
+        if (!force){
+            let tem=this.getData(data.project_id)
+            if (tem!=null){
+                return tem
+            }
+        }
         var mContext: any
         this.httpService.post(API.API_GROUP_GET, {
             project_id: data.project_id,
         }, {
             success(data){
+                // mContext.setData(data.project_id,data)
+
                 context.OnApiGroupGetSuccessListener(data)
             },
             failure(code){
@@ -48,20 +65,18 @@ export class ApiGroupModel extends Model {
     }
 
 
-    httpApiGroupCreate(data: any = {project_id: 0, name: '', summary: '', icon: ''}, success: any, failure: any) {
-        this.httpService.post(API.API_USER_LOGIN, {
+    httpApiGroupCreate(data: any = {project_id: 0, name: '', summary: '', icon: ''}, context:any) {
+        this.httpService.post(API.API_GROUP_CREATE, {
             project_id: data.project_id,
             name: data.name,
             summary: data.summary,
             icon: data.icon
         }, {
             success(data){
-                success()
-                console.log(data)
+                context.OnApiGroupCreateSuccessListener(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                context.OnApiGroupCreateFailureListener(code)
             },
             error(){
                 console.log()
@@ -92,20 +107,17 @@ export class ApiGroupModel extends Model {
         })
     }
 
-    httpApiGroupDelete(data: any = {id: 0}, success: any, failure: any) {
-        this.httpService.post(API.API_USER_LOGIN, {
+    httpApiGroupDelete(data: any = {id: 0},context:any) {
+        this.httpService.post(API.API_GROUP_DELETE, {
             id: data.id,
         }, {
             success(data){
-                success()
-                console.log(data)
+               context.OnApiGroupDeleteSuccessListener(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                context.OnApiGroupDeleteFailureListener(code)
             },
             error(){
-                console.log()
 
             }
         })
@@ -117,4 +129,16 @@ export interface ApiGroupGetListener {
     OnApiGroupGetSuccessListener(data: any): void
     OnApiGroupGetFailureListener(code: any): void
     OnApiGroupGetErrorListener(): void
+}
+
+export interface ApiGroupCreateListener {
+    OnApiGroupCreateSuccessListener(data: any): void
+    OnApiGroupCreateFailureListener(code: any): void
+    OnApiGroupCreateErrorListener(): void
+}
+
+export interface ApiGroupDeleteListener {
+    OnApiGroupDeleteSuccessListener(data: any): void
+    OnApiGroupDeleteFailureListener(code: any): void
+    OnApiGroupDeleteErrorListener(): void
 }

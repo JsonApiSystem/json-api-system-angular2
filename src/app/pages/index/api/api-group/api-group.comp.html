@@ -6,11 +6,11 @@
             <p class="group-summary"> {{this.apiGroup.summary}}</p>
         </div>
         <div class="box-group-summary" *ngIf="this.apiGroup.name==undefined">
-            <p class="group-title"><md-input></md-input></p>
+            <p class="group-title"><md-input #nameInput></md-input></p>
         </div>
         <div  class="box-group-test t-r">
             <md-button [text]="'测试'" [isFlat]="true" (click)="HandleTestClick(this.apiGroup.id)" *ngIf="this.apiGroup.name!=undefined"></md-button>
-            <md-button [text]="'保存'" [isFlat]="true" (click)="HandleTestClick(this.apiGroup.id)" *ngIf="this.apiGroup.name==undefined"></md-button>
+            <md-button [text]="'保存'" [isFlat]="true" (click)="HandleSaveClick()" *ngIf="this.apiGroup.name==undefined"></md-button>
         </div>
     </div>
     <div class="box-api-item" *ngFor="let api of this.apiList; let i = index;">

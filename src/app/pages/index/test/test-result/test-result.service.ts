@@ -12,6 +12,7 @@ import {TestReportModel, TestReportGetListener} from "../../../../models/TestRep
 export class TestResultService extends AppPageService implements TestReportGetListener {
     OnTestReportGetSuccess(data: any): void {
         this.data = data
+        // console.log(data)
     }
 
     OnTestReportGetFailure(data: any): void {

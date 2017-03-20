@@ -3,6 +3,8 @@ import {AlertService, AlertListener} from "../../../../__module/component/alert/
 import {ApiGroupComListener, ApiGroupService} from "./api-group.service";
 import {Router} from "@angular/router";
 import {ApiNewComp} from "../api-new/api-new.comp";
+import {InputComp} from "../../../../__module/component/input/input.comp";
+import {ApiPageService} from "../api.page.service";
 @Component({
     selector: 'api-group',
     templateUrl: './api-group.comp.html',
@@ -33,15 +35,19 @@ export class ApiGroupComp extends ApiGroupComListener implements OnInit,AlertLis
         this.apiGroupService.init(this, this.apiGroup.id)
     }
 
+
     @ViewChild('apiNew') apiNew: ApiNewComp
+    @ViewChild('nameInput') nameInput: InputComp
     @Input() apiGroup: any
     @Input() projectId: any
     @Input() index:any
     @Output() OnApiGroupDelete = new EventEmitter<any>();
     apiList: any
 
+
     constructor(private alertService: AlertService,
                 private apiGroupService: ApiGroupService,
+                private apiPageService:ApiPageService,
                 private router: Router,) {
         super()
     }
@@ -58,4 +64,8 @@ export class ApiGroupComp extends ApiGroupComListener implements OnInit,AlertLis
         // this.alertService.show('确认删除?', '确认删除该分组?', this,project_id)
         this.OnApiGroupDelete.emit(this.index)
     }
+    HandleSaveClick(){
+        this.apiPageService.createGroup(this.nameInput.getValue(),this.projectId['id'])
+    }
+
 }

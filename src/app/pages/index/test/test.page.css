@@ -44,9 +44,10 @@
     width: 50%;
     display: inline-block;
     height: 100%;
-    padding: 10px;
     box-sizing: border-box;
     vertical-align: top;
+    padding-bottom: 60px;
+    overflow: scroll;
 }
 
 .api-title {

@@ -44,6 +44,9 @@ import {TestResultComp} from "./pages/index/test/test-result/test-result.com";
 import {TestResultItemComp} from "./pages/index/test/test-result/test-result-item/test-result-item.com";
 import {TestResultService} from "./pages/index/test/test-result/test-result.service";
 import {TestReportModel} from "./models/TestReportModel";
+import {ReportPage} from "./pages/report/report.page";
+import {ReportPageService} from "./pages/report/report.page.service";
+import { Ng2Echarts } from 'ng2-echarts';
 
 const appRoutes: Routes = [
 
@@ -68,6 +71,10 @@ const appRoutes: Routes = [
             {
                 path: 'test/:i',
                 component: TestPage
+            },
+            {
+                path: 'report/:id',
+                component: ReportPage
             }
         ]
     }
@@ -98,7 +105,8 @@ const appRoutes: Routes = [
         ApiGroupService,
         TestPageService,
         TestTaskService,
-        TestResultService
+        TestResultService,
+        ReportPageService
     ],
     declarations: [
         AppPage,
@@ -122,7 +130,9 @@ const appRoutes: Routes = [
         TestTaskNewParamComp,
         TestTaskItemComp,
         TestResultComp,
-        TestResultItemComp
+        TestResultItemComp,
+        ReportPage,
+        Ng2Echarts
     ],
     bootstrap: [AppPage]
 })

@@ -11,6 +11,10 @@ export class ApiPage extends ApiPageListener implements OnInit {
         // console.log(this.router.params.subscribe())
     }
 
+    OnApiGroupCreateSuccessListener(data: any) {
+        this.apiPageService.init(this.projectId['id'], this)
+    }
+
     OnApiGroupGetSuccessListener(data: any) {
         this.groupList = data
     }
@@ -19,6 +23,11 @@ export class ApiPage extends ApiPageListener implements OnInit {
 
     }
 
+    OnApiGroupDeleteSuccessListener(data: any) {
+        this.apiPageService.init(this.projectId['id'], this)
+    }
+
+    data: any = []
     groupList: any
     projectId: any
 
@@ -37,10 +46,11 @@ export class ApiPage extends ApiPageListener implements OnInit {
         this.groupList[this.groupList.length] = {}
     }
 
-    OnApiGroupDelete(index:number){
-        if (this.groupList[index]['id']==undefined){
-            this.groupList.splice(index,1)
-        }else {
+    OnApiGroupDelete(index: number) {
+        if (this.groupList[index]['id'] == undefined) {
+            this.groupList.splice(index, 1)
+        } else {
+            this.apiPageService.deleteGroup(this.groupList[index]['id'])
         }
     }
 }
