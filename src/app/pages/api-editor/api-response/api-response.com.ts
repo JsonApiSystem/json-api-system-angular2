@@ -23,6 +23,9 @@ export class ApiResponseComp {
     }
 
     getResponse() {
+        console.log(this.response)
         return JSON.stringify(this.response)
     }
+
+
 }

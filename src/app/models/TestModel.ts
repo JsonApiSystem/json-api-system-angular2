@@ -73,10 +73,10 @@ export class TestModel {
             id: data.id
         }, {
             success(data){
-                context.OnTestGetSuccess(data)
+                context.OnTestDeleteSuccess(data)
             },
             failure(code){
-                context.OnTestGetFailure(code)
+                context.OnTestDeleteFailure(code)
             },
             error(){
                 console.log()

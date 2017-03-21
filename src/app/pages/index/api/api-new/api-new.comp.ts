@@ -61,7 +61,7 @@ export class ApiNewComp implements OnInit,ApiCreateListener {
         this.sureBtn.toggleLoading()
         this.apiModel.httpApiCreate({
             group_id: this.groupId,
-            project_id: this.projectId,
+            project_id: this.projectId.id,
             name: this.nameInput.getValue(),
             summary: this.summaryInput.getValue(),
         }, this)

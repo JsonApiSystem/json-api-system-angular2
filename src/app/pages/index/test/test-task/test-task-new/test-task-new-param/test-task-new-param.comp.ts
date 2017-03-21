@@ -11,8 +11,9 @@ export class TestTaskNewParamComp {
 
     setData(data: any) {
         this.param = data
-        console.log('setData', data)
-        // this.getData()
+        this.input.map(item=>{
+            item.setValue('')
+        })
     }
 
     getData() {

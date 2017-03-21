@@ -1,12 +1,12 @@
 <div>
     <label>API请求参数 : </label>
-    <div>
+    <div class="title">
         <p>参数名称</p>
         <p>参数类型</p>
         <p>是否必须</p>
         <p>参数说明</p>
     </div>
-    <div *ngFor="let p of this.param; let i = index;" >
+    <div class="com-api-item" *ngFor="let p of this.param; let i = index;" >
         <api-param-item [param]="p"></api-param-item>
         <i class="fa fa-close" (click)="HandleParamDeleteBtnClick(i)"></i>
     </div>

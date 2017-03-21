@@ -3,26 +3,26 @@
         <div class="box-api-editor-content">
             <div>
                 <label>API名称 : </label>
-                <md-input [type]="'text'" [value]="apiEditorService.apiDetail.name"></md-input>
+                <md-input [type]="'text'" #nameInput [value]="apiEditorService.apiDetail.name"></md-input>
             </div>
             <div>
                 <label>API简介 : </label>
-                <md-input [type]="'text'" [value]="apiEditorService.apiDetail.summary"></md-input>
+                <md-input [type]="'text'" #summaryInput [value]="apiEditorService.apiDetail.summary"></md-input>
             </div>
             <div>
                 <label>API方法 : </label>
-                <md-input [type]="'text'" [value]="apiEditorService.apiDetail.method"></md-input>
+                <md-input [type]="'text'" #methodInput [value]="apiEditorService.apiDetail.method"></md-input>
             </div>
             <div>
                 <label>API请求地址 : </label>
-                <md-input [type]="'text'" [value]="apiEditorService.apiDetail.url"></md-input>
+                <md-input [type]="'text'" #urlInput [value]="apiEditorService.apiDetail.url"></md-input>
 
             </div>
             <div>
-                <api-param #apiParam [param]="apiEditorService.apiDetail.param"></api-param>
+                <api-param #paramInput [param]="apiEditorService.apiDetail.param"></api-param>
             </div>
             <div>
-                <api-response #apiResponse></api-response>
+                <api-response #responseInput></api-response>
             </div>
             <div>
                 <label>API备注 : </label>

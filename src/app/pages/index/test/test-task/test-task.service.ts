@@ -12,8 +12,6 @@ export class TestTaskService {
     }
 
     createTest(data: any, context: any) {
-
-        console.log(data);
         this.testModel.httpTestCreate(data, context)
     }
 

@@ -4,7 +4,6 @@ import {Router, ActivatedRoute} from "@angular/router";
 import {Location} from '@angular/common';
 import {Http} from "@angular/http";
 import {TestTaskComp} from "./test-task/test-task.comp";
-import {TestTaskNewComp} from "./test-task/test-task-new/test-task-new.comp";
 import {ButtonComp} from "../../../__module/component/button/button.comp";
 @Component({
     selector: 'test-page',
@@ -25,9 +24,11 @@ export class TestPage extends TestPageListener implements OnInit {
     }
 
     OnApiDetailSuccessListener(data: any) {
-        // console.log(data)
+        this.apiDetail=data
         this.testTask.setData(data)
-        this.testTaskNew.setData(data)
+    }
+    HandleTestCreateSuccess(){
+
     }
 
     OnApiDetailFailureListener(code: any) {
@@ -35,11 +36,10 @@ export class TestPage extends TestPageListener implements OnInit {
     }
 
     @ViewChild('testTask') testTask: TestTaskComp
-    @ViewChild('testTaskNew') testTaskNew: TestTaskNewComp
     @ViewChild('testAddBtn') testAddBtn: ButtonComp
 
     apiList: any
-    isAddShow: boolean=false
+    apiDetail:any
 
     constructor(private testPageService: TestPageService,
                 private router: Router,
@@ -53,10 +53,12 @@ export class TestPage extends TestPageListener implements OnInit {
 
     }
 
-    HandleTestAddBtnClick() {
-        this.isAddShow = true
-    }
 
+    /**
+     * 测试api点击事件
+     * @param id
+     * @constructor
+     */
     HandleTestClick(id: number) {
         this.testPageService.getApiDetail(id)
     }

@@ -8,6 +8,7 @@ import {Injectable} from '@angular/core';
 import {ApiCreateListener, ApiUpdateListener, ApiModel, ApiDetailListener} from "../../models/ApiModel";
 import {isArray} from "rxjs/util/isArray";
 import {el} from "@angular/platform-browser/testing/browser_util";
+import {SmallToastService} from "../../__module/component/toast/small-toast.service";
 
 export class ApiEditorListener implements ApiUpdateListener,ApiDetailListener {
     OnApiDetailSuccessListener(data: any): void {
@@ -32,8 +33,16 @@ export class ApiEditorListener implements ApiUpdateListener,ApiDetailListener {
 }
 @Injectable()
 export class ApiEditorService extends ApiEditorListener {
+    OnApiUpdateSuccessListener(data:any){
+        this.toast.showToast('修改成功')
+    }
     OnApiDetailSuccessListener(data: any): void {
-        data['param'] = JSON.parse(data['param'])
+        // data['param'] = JSON.parse(data['param'])==null?[]: JSON.parse(data['param'])
+        if (data['param'] != '') {
+            data['param'] = JSON.parse(data['param'])
+        } else {
+            data['param'] = []
+        }
         this.apiDetail = data
     }
 
@@ -43,7 +52,8 @@ export class ApiEditorService extends ApiEditorListener {
     apiDetail = {}
 
 
-    constructor(private apiModel: ApiModel) {
+    constructor(private apiModel: ApiModel,
+                private toast: SmallToastService) {
         super()
     }
 
@@ -97,8 +107,8 @@ export class ApiEditorService extends ApiEditorListener {
         // var data = this.apiDetail
         // data['param'] = JSON.stringify(this.apiDetail['param'])
         // data['response']=JSON.stringify(this.apiDetail['response'])
-        let d=this.apiDetail
-        d['params']=param
+        let d = this.apiDetail
+        Object.assign(d, param)
         this.apiModel.httpApiUpdate(d, context)
 
     }

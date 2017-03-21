@@ -30,4 +30,7 @@ export class InputComp {
     getValue() {
         return this.value
     }
+    setValue(value:any){
+        this.value=value
+    }
 }

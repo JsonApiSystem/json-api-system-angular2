@@ -88,6 +88,7 @@ export class ApiModel {
         response:'',
         method: 0
     }, context:any) {
+
         this.httpService.post(API.API_UPDATE, {
             id: data.id,
             group_id: data.group_id,

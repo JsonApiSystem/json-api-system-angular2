@@ -13,9 +13,12 @@ export class ApiEditorPage extends ApiEditorListener {
         super()
     }
 
-    @ViewChildren(InputComp) nameInput: QueryList<InputComp>
-    @ViewChild('apiParam') apiParam: ApiParamComp
-    @ViewChild('apiResponse') apiResponse: ApiResponseComp
+    @ViewChild('nameInput') nameInput: InputComp
+    @ViewChild('summaryInput') summaryInput: InputComp
+    @ViewChild('methodInput') methodInput: InputComp
+    @ViewChild('urlInput') urlInput: InputComp
+    @ViewChild('paramInput') paramInput: ApiParamComp
+    @ViewChild('responseInput') responseInput: ApiResponseComp
 
     OnApiUpdateSuccessListener(data: any) {
         this.apiEditorService.hide()
@@ -33,7 +36,14 @@ export class ApiEditorPage extends ApiEditorListener {
         //     console.log(item)
         // })
         // console.log(this.apiParam.getParam())
-        this.apiEditorService.save(this,this.apiParam.getParam())
+        this.apiEditorService.save(this,{
+            name:this.nameInput.getValue(),
+            summary:this.summaryInput.getValue(),
+            method:this.methodInput.getValue(),
+            url:this.urlInput.getValue(),
+            params:this.paramInput.getParam(),
+            response:this.responseInput.getResponse()
+        })
     }
 
     HandleCancelBtnClick() {

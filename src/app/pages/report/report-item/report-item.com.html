@@ -1,8 +1,8 @@
 <div class="com-report-item">
-    <div class="title" (click)="HandleTitleClick()">
+    <div class="title" (click)="HandleTitleClick()" style="line-height: 40px">
         {{index+1}} : 状态码 {{report.code}}
     </div>
-    <div class="content" *ngIf="isShow">
+    <div class="content" *ngIf="isShow" style="border-top: 1px solid #eeeeee">
         <div [ng2-echarts]="option" style="height: 300px; width: 100%">
 
         </div>

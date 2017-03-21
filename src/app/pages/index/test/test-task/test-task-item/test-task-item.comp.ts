@@ -19,7 +19,8 @@ export class TestTaskItemComp extends TestPageListener {
     }
 
     OnTestDeleteSuccess(data: any) {
-        console.log('success')
+        this.toast.showToast('删除成功')
+        this.OutputTestDeleteSuccess.emit()
     }
 
     OnTestDeleteFailure(data: any) {
@@ -28,6 +29,7 @@ export class TestTaskItemComp extends TestPageListener {
 
 
     @Output() OutputTestTitleClick = new EventEmitter<any>();
+    @Output() OutputTestDeleteSuccess = new EventEmitter<any>();
 
     constructor(private testPageService: TestPageService,
                 private testReportService: TestResultService,

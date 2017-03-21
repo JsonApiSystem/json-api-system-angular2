@@ -11,9 +11,6 @@
     </div>
     <div class="box-task">
         <test-task #testTask></test-task>
-        <test-task-new  #testTaskNew *ngIf="isAddShow" ></test-task-new>
-        <md-button  *ngIf="!isAddShow" #testAddBtn [isFlat]="'true'" [text]="'新增'" (click)="HandleTestAddBtnClick()"></md-button>
-
     </div>
     <div class="box-result">
        <test-result #testResult></test-result>

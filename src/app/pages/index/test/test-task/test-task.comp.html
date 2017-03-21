@@ -1,5 +1,6 @@
 <div>
     <div class="comp-test-task" *ngFor="let task of this.testList; let i = index;">
-        <test-task-item [task]="task" ></test-task-item>
+        <test-task-item [task]="task" (OutputTestDeleteSuccess)="HandleTestDeleteSuccess()"></test-task-item>
     </div>
+    <test-task-new  #testTaskNew  (OutputTestCreateSuccess)="HandleTestCreateSuccess($event)"></test-task-new>
 </div>

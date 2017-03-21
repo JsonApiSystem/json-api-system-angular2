@@ -1,5 +1,5 @@
 <div>
-    <div class="box7">
+    <div class="box7" >
         <p class="test-name"
            (click)="HandleTestTitleClick(task.id)"
         >{{task.name}} <i class="fa fa-arrow-circle-down"></i></p>
@@ -9,12 +9,12 @@
         <md-button [isFlat]="true" [text]="'RUN'" (click)="HandleRunBtnClick(task.id)"></md-button>
     </div>
 
-    <div *ngIf="isShow">
+    <div *ngIf="isShow" style="border-top: 1px solid #eeeeee">
         <div class="box-api-test-param">
-            <div *ngFor="let param of task.params; let i = index;">
-                <p style="width: 20%;display: inline-block">{{param.key}}</p>
-                <div style="width: 75% ;display: inline-block">
-                    <md-input [value]="param.value"></md-input>
+            <div *ngFor="let param of task.params; let i = index;" style="font-size: 0px">
+                <p style="width: 50%;display: inline-block;font-size: 14px">{{param.key}}</p>
+                <div style="width: 50% ;display: inline-block;font-size: 14px">
+                    <p>{{param.value}}</p>
                 </div>
             </div>
         </div>

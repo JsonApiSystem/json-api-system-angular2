@@ -1,4 +1,7 @@
-<div>
+<div  class="com-tast-new">
+    <div   style="border-bottom: 1px solid #eeeeee;line-height: 30px">
+        <p>新建测试</p>
+    </div>
     <div class="box-container">
         <p class="box3">名称</p>
         <div class="box7">
@@ -20,6 +23,5 @@
     <test-task-new-param [param]="this.param" #testTaskNewParam></test-task-new-param>
     <div>
         <md-button [isFlat]="'true'" [text]="'保存'" (click)="HandleTestAddSureBtnClick()"></md-button>
-        <md-button [isFlat]="'true'" [text]="'取消'" (click)="HandleTestAddCancelBtnClick()"></md-button>
     </div>
 </div>

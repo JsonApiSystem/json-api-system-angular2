@@ -1,6 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, ViewChild,OnInit, Input} from '@angular/core';
 import {TestTaskListener, TestTaskService} from "./test-task.service";
 import {TestResultService} from "../test-result/test-result.service";
+import {TestTaskNewComp} from "./test-task-new/test-task-new.comp";
 @Component({
     selector: 'test-task',
     templateUrl: './test-task.comp.html',
@@ -11,21 +12,22 @@ export class TestTaskComp extends TestTaskListener {
     data: any = []
     testList: any = []
 
+
     constructor(private testTaskService: TestTaskService,
                 private testResultService: TestResultService) {
         super()
     }
+    @ViewChild('testTaskNew') testTaskNew: TestTaskNewComp
 
     OnTestGetSuccess(data: any) {
-        console.log('before', data)
 
         for (let i = 0; i < data.length; i++) {
             if (data[i]['params'] != null && data[i]['params'] != '') {
                 data[i]['params'] = JSON.parse(data[i]['params'])
             }
         }
-        console.log('transfer', data)
         this.testList = data
+
     }
 
     OnTestGetFailure(code: any) {
@@ -38,9 +40,18 @@ export class TestTaskComp extends TestTaskListener {
 
 
     setData(data: any) {
+        this.data=data
+        this.testTaskNew.setData(data)
         if (data['param'] != null) {
-            this.data = JSON.parse(data['param'])
+            this.data['param'] = JSON.parse(data['param'])
         }
         this.testTaskService.getTest(data.id, this)
+    }
+    HandleTestDeleteSuccess(){
+        this.testTaskService.getTest(this.data.id, this)
+    }
+    HandleTestCreateSuccess(){
+        this.testTaskService.getTest(this.data.id, this)
+
     }
 }
