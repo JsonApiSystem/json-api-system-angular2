@@ -1,96 +1,97 @@
 import {Component, ViewChild, Renderer, ElementRef, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 
-import {ReportPageService} from "./report.page.service";
+import {ReportPageService, ReportPageListener} from "./report.page.service";
 @Component({
     selector: 'report',
     templateUrl: './report.page.html',
     styleUrls: ['./report.page.css']
 })
-export class ReportPage {
-    resultDetail: any = {
-        title: {
-            text: '堆叠区域图'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
-        },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: [
-            {
-                type: 'category',
-                boundaryGap: false,
-                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value'
-            }
-        ],
-        series: [
-            {
-                name: '邮件营销',
-                type: 'line',
-                stack: '总量',
-                areaStyle: {normal: {}},
-                data: [120, 132, 101, 134, 90, 230, 210]
+export class ReportPage extends ReportPageListener implements OnInit{
+
+
+    OnReportDetailGetSuccess(data: any) {
+        this.reportList = data
+        let b_text:any=[]
+        let look_up_time:any=[]
+        let start_time:any=[]
+        let total_time:any=[]
+        for(let i=0;i<this.reportList.length;i++){
+            b_text[i]='第'+(i+1)+'次'
+            look_up_time[i]=this.reportList[i].lookup_time
+            start_time[i]=this.reportList[i].start_time
+            total_time[i]=this.reportList[i].total_time
+        }
+        console.log(b_text,look_up_time,total_time)
+
+        this.option = {
+            title: {
+                text: 'api数据时间图像'
             },
-            {
-                name: '联盟广告',
-                type: 'line',
-                stack: '总量',
-                areaStyle: {normal: {}},
-                data: [220, 182, 191, 234, 290, 330, 310]
+            tooltip: {
+                trigger: 'axis'
             },
-            {
-                name: '视频广告',
-                type: 'line',
-                stack: '总量',
-                areaStyle: {normal: {}},
-                data: [150, 232, 201, 154, 190, 330, 410]
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
             },
-            {
-                name: '直接访问',
-                type: 'line',
-                stack: '总量',
-                areaStyle: {normal: {}},
-                data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-                name: '搜索引擎',
-                type: 'line',
-                stack: '总量',
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'top'
-                    }
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: b_text
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: '解析时间',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data:look_up_time
                 },
-                areaStyle: {normal: {}},
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-        ]
+                {
+                    name: '连接时间',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data: start_time
+                },
+                {
+                    name: '总时间',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data: total_time
+                }
+            ]
+        }
+
+
     }
+
+    option: any = {}
+
+    reportList: any=[]
+    ngOnInit(){
+
+
+    }
+
 
     constructor(private activeRouter: ActivatedRoute,
                 private reportPageService: ReportPageService) {
+        super()
         this.activeRouter.params
             .subscribe(id => {
-                this.reportPageService.init(id['id'],this)
+                this.reportPageService.init(id['id'], this)
             });
 
     }

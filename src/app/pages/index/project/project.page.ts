@@ -54,7 +54,6 @@ export class ProjectPage extends ProjectPageListener implements OnInit {
     }
 
     HandleProjectClick(id: any) {
-        console.log('555')
         this.router.navigate(['index/api', id])
     }
 

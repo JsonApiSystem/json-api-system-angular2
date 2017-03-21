@@ -27,12 +27,11 @@ export class ProjectComp implements AlertListener {
 
     HandleOnAlertBtnClick(event: any) {
         event.stopPropagation();
-        this.projectEditorModelService.show('修改')
+        this.projectEditorModelService.show('修改', this.project)
 
     }
 
     HandleOnDeleteBtnClick(event: any, id: any, index: any) {
-        console.log(id)
         event.stopPropagation();
         this.alertService.show('确认删除?', '确认删除该项目?', this, {id: id, index: this.index})
     }

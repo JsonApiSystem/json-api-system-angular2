@@ -13,7 +13,7 @@ export class AlertService {
     content: string;
     data:any
 
-    show(title: string, content: string, alertListener: AlertListener,data:any) {
+    show(title: string, content: string, alertListener: AlertListener,data:any='') {
         this.isShow = true
         this.title = title
         this.content = content

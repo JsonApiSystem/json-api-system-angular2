@@ -47,6 +47,9 @@ import {TestReportModel} from "./models/TestReportModel";
 import {ReportPage} from "./pages/report/report.page";
 import {ReportPageService} from "./pages/report/report.page.service";
 import { Ng2Echarts } from 'ng2-echarts';
+import {ReportItemComp} from "./pages/report/report-item/report-item.com";
+import {ReportDetailModel} from "./models/ReporDetailtModel";
+import {ProjectMemberModel} from "./models/ProjectMemberModel";
 
 const appRoutes: Routes = [
 
@@ -106,7 +109,9 @@ const appRoutes: Routes = [
         TestPageService,
         TestTaskService,
         TestResultService,
-        ReportPageService
+        ReportPageService,
+        ReportDetailModel,
+        ProjectMemberModel
     ],
     declarations: [
         AppPage,
@@ -132,7 +137,8 @@ const appRoutes: Routes = [
         TestResultComp,
         TestResultItemComp,
         ReportPage,
-        Ng2Echarts
+        Ng2Echarts,
+        ReportItemComp
     ],
     bootstrap: [AppPage]
 })

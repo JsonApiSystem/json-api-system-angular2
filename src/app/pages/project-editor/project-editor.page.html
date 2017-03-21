@@ -3,20 +3,33 @@
         <div  class="box-api-editor-content">
             <div>
                 <label >项目名称 : </label>
-                <md-input [type]="'text'" #nameInput></md-input>
+                <md-input [type]="'text'" #nameInput [value]="projectEditorService.data.name"></md-input>
             </div>
             <div>
                 <label >项目简介 : </label>
-                <md-input [type]="'text'" #nameSummary></md-input>
+                <md-input [type]="'text'" #summaryInput [value]="projectEditorService.data.summary"></md-input>
             </div>
             <div>
                 <label >项目根地址 : </label>
-                <md-input [type]="'text'" #name></md-input>
+                <md-input [type]="'text'" #urlInput [value]="projectEditorService.data.url"></md-input>
             </div>
             <div class="t-r">
-                <md-button [text]="'保存'"  [isFlat]="true"  (click)="OnSaveBtnClick()"></md-button>
-                <md-button [text]="'取消'" [isFlat]="true" (click)="OnCancelBtnClick()"></md-button>
+                <md-button [text]="'保存'"  [isFlat]="true"  (click)="HandleSaveBtnClick()"></md-button>
+                <md-button [text]="'取消'" [isFlat]="true" (click)="HandleCancelBtnClick()"></md-button>
             </div>
+            <div>
+                <label >项目成员 : </label>
+                <div *ngFor="let member of this.memberList; let i = index;">
+                    <img src="{{member.icon}}" alt="">
+                    <p>{{member.nickname}}</p>
+                    <i class="fa fa-close"></i>
+                </div>
+                    <div>
+                    <i class="fa fa-2x fa-plus"></i>
+                </div>
+            </div>
+
+
         </div>
     </card>
 </div>

@@ -14,7 +14,7 @@ export class ProjectModel extends Model {
     data: any
 
     constructor(private httpService: MdHttpService,
-    private userLocalStorage:UserLocalStorage) {
+                private userLocalStorage: UserLocalStorage) {
         super()
     }
 
@@ -64,20 +64,19 @@ export class ProjectModel extends Model {
         })
     }
 
-    httpProjectUpdate(data: any = {id: 0, name: '', summary: '', icon: ''}, success: any, failure: any) {
-        this.httpService.post(API.API_USER_REGISTER, {
+    httpProjectUpdate(data: any = {id: 0, name: '', summary: '', icon: ''}, context: any) {
+        this.httpService.post(API.API_PROJECT_UPDATE, {
             name: data.name,
             summary: data.summary,
             icon: data.icon,
+            url:data.url,
             id: data.id
         }, {
             success(data){
-                success()
-                console.log(data)
+                context.OnProjectUpdateSuccess(data)
             },
             failure(code){
-                console.log(code)
-                failure();
+                context.OnProjectUpdateFailure(code)
             },
             error(){
                 console.log()
@@ -145,6 +144,20 @@ export abstract class ProjectCreateListener {
     }
 
     OnProjectCreateError() {
+
+    }
+}
+
+export abstract class ProjectUpdateListener {
+    OnProjectUpdateSuccess(data: any) {
+
+    }
+
+    OnProjectUpdateFailure(code: any) {
+
+    }
+
+    OnProjectUpdateError() {
 
     }
 }

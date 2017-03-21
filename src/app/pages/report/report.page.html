@@ -1,1 +1,12 @@
-<div [ng2-echarts]="resultDetail" style="height: 300px; width: 100%"></div>
+<!--<div [ng2-echarts]="resultDetail" style="height: 300px; width: 100%"></div>-->
+
+<div class="page-report">
+    <div class="box-count">
+        <div [ng2-echarts]="option" style="height: 300px; width: 100%"></div>
+    </div>
+    <div class="box-detail">
+        <div  *ngFor="let report of this.reportList; let i = index;">
+            <report-item [index]="i" [report]="report"></report-item>
+        </div>
+    </div>
+</div>

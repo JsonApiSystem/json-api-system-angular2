@@ -16,6 +16,11 @@ export const API = {
     API_PROJECT_UPDATE: ROOT_API + 'project/update',
     API_PROJECT_DELETE: ROOT_API + 'project/delete',
 
+    API_PROJECT_MEMBER_GET: ROOT_API + 'project-member/get',
+    API_PROJECT_MEMBER_CREATE: ROOT_API + 'project-member/create',
+    API_PROJECT_MEMBER_UPDATE: ROOT_API + 'project-member/update',
+    API_PROJECT_MEMBER_DELETE: ROOT_API + 'project-member/delete',
+
     API_GROUP_GET: ROOT_API + 'group/get',
     API_GROUP_CREATE: ROOT_API + 'group/create',
     API_GROUP_UPDATE: ROOT_API + 'group/update',
@@ -34,5 +39,6 @@ export const API = {
     TEST_DELETE: ROOT_API + 'test/delete',
     TEST_RUN: ROOT_API + 'test/run',
 
-    TEST_REPORT_GET: ROOT_API + 'report/get'
+    TEST_REPORT_GET: ROOT_API + 'report/get',
+    TEST_REPORT_DETAIL_GET: ROOT_API + 'report-detail/get'
 }

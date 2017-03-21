@@ -1,0 +1,12 @@
+<div class="com-report-item">
+    <div class="title" (click)="HandleTitleClick()">
+        {{index+1}} : 状态码 {{report.code}}
+    </div>
+    <div class="content" *ngIf="isShow">
+        <div [ng2-echarts]="option" style="height: 300px; width: 100%">
+
+        </div>
+        <div>接受参数:{{report.param}}</div>
+        <div>返回结果:{{report.result}}</div>
+    </div>
+</div>

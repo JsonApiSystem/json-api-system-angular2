@@ -22,6 +22,7 @@ export class ApiGroupComp extends ApiGroupComListener implements OnInit,AlertLis
 
     OnApiGetSuccessListener(data: any) {
         this.apiList = data
+        this.count=data.length
     }
 
     OnApiGetFailureListener(code: any) {
@@ -43,6 +44,7 @@ export class ApiGroupComp extends ApiGroupComListener implements OnInit,AlertLis
     @Input() index:any
     @Output() OnApiGroupDelete = new EventEmitter<any>();
     apiList: any
+    count:any=0
 
 
     constructor(private alertService: AlertService,
