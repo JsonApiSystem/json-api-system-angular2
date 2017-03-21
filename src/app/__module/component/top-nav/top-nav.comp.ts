@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router,ActivatedRoute} from "@angular/router";
 
 import {UserLocalStorage} from "../../../utils/UserLocalStorage";
 import {AlertListener, AlertService} from "../alert/alert.comp.service";
+import {TopNavService} from "./top-nav.service";
 @Component({
     selector: 'top-nav',
     templateUrl: './top-nav.comp.html',
@@ -15,16 +16,19 @@ export class TopNavComp implements AlertListener {
 
     }
 
-    userInfo: any={
-        icon:'',
-        nickname:''
+    userInfo: any = {
+        icon: '',
+        nickname: ''
     }
+
 
     constructor(private userLocalStorage: UserLocalStorage,
                 private alertService: AlertService,
-                private router: Router) {
-        (!userLocalStorage.getUserInfo())&&this.router.navigate(['login'])
-        this.userInfo =userLocalStorage.getUserInfo()
+                private router: Router,
+                private topNavService:TopNavService,
+                private activeRoute:ActivatedRoute) {
+        (!userLocalStorage.getUserInfo()) && this.router.navigate(['login'])
+        this.userInfo = userLocalStorage.getUserInfo()
 
     }
 
@@ -32,4 +36,12 @@ export class TopNavComp implements AlertListener {
         this.alertService.show('确认退出？', '确认退出登录状态？', this)
     }
 
+    setBackText(text: string) {
+        this.topNavService.backText = text
+
+    }
+
+    HandleBckClick(){
+        history.back()
+    }
 }

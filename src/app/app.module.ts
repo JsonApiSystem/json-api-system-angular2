@@ -50,6 +50,7 @@ import { Ng2Echarts } from 'ng2-echarts';
 import {ReportItemComp} from "./pages/report/report-item/report-item.com";
 import {ReportDetailModel} from "./models/ReporDetailtModel";
 import {ProjectMemberModel} from "./models/ProjectMemberModel";
+import {TopNavService} from "./__module/component/top-nav/top-nav.service";
 
 const appRoutes: Routes = [
 
@@ -111,7 +112,8 @@ const appRoutes: Routes = [
         TestResultService,
         ReportPageService,
         ReportDetailModel,
-        ProjectMemberModel
+        ProjectMemberModel,
+        TopNavService
     ],
     declarations: [
         AppPage,

@@ -5,6 +5,7 @@ import {ProjectModel, ProjectModelListener} from "../../../models/ProjectModel";
 import {ProjectPageListener, ProjectPageService} from "./project.service";
 import {ProjectNewModalService} from "../../project-new-modal/project-new.modal.service";
 import {SmallToastService} from "../../../__module/component/toast/small-toast.service";
+import {TopNavService} from "../../../__module/component/top-nav/top-nav.service";
 @Component({
     selector: 'project',
     templateUrl: './project.page.html',
@@ -34,7 +35,7 @@ export class ProjectPage extends ProjectPageListener implements OnInit {
     }
 
     OnProjectCreateSuccess(data: any) {
-        this.projectPageService.init(this,true)
+        this.projectPageService.init(this, true)
     }
 
     OnProjectCreateFailure(code: number) {
@@ -47,8 +48,12 @@ export class ProjectPage extends ProjectPageListener implements OnInit {
     constructor(private router: Router,
                 private smallToastService: SmallToastService,
                 private projectNewModalService: ProjectNewModalService,
-                private projectPageService: ProjectPageService) {
+                private projectPageService: ProjectPageService,
+                private topNavService: TopNavService) {
+
         super()
+        this.topNavService.title = '项目列表'
+        this.topNavService.isShow = false
         this.projectPageService.init(this);
 
     }

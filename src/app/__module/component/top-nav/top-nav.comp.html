@@ -1,6 +1,9 @@
-<div class="com-top-nav">
-    <div>
-
+<div class="com-top-nav" style="text-align: center">
+    <div *ngIf="topNavService.isShow" (click)="HandleBckClick()" style="line-height: 60px;padding-left: 10px;box-sizing: border-box;float:left;;color: #2196F3;">
+        <i class="fa  fa-arrow-left"></i> {{topNavService.backText}}
+    </div>
+    <div style="line-height: 60px;width: 60%;display: inline-block">
+        {{topNavService.title}}
     </div>
     <div class="right">
         <img src="{{userInfo.icon}}" alt="">

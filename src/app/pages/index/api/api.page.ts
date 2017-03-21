@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiPageListener, ApiPageService} from "./api.page.service";
 import {Router, ActivatedRoute, Params} from "@angular/router";
+import {TopNavService} from "../../../__module/component/top-nav/top-nav.service";
 @Component({
     selector: 'api',
     templateUrl: './api.page.html',
@@ -32,8 +33,14 @@ export class ApiPage extends ApiPageListener implements OnInit {
     projectId: any
 
     constructor(private apiPageService: ApiPageService,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute,
+                private topNavService: TopNavService) {
+
         super()
+        this.topNavService.title='API列表'
+        this.topNavService.backText='返回项目'
+        this.topNavService.isShow = true
+
         this.route.params
             .subscribe(id => {
                 this.projectId = id
