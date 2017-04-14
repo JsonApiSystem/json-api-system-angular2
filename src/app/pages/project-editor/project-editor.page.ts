@@ -33,4 +33,5 @@ export class ProjectEditorPage extends ProjectEditorPageListener {
     HandleCancelBtnClick() {
         this.projectEditorService.hide()
     }
+
 }

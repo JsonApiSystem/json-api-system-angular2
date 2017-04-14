@@ -27,11 +27,11 @@ export class ReportItemComp implements OnInit{
                     radius : '55%',
                     center: ['50%', '60%'],
                     data:[
-                        {value:this.report.lookup_time, name:'解析时间'+this.report.lookup_time},
-                        {value:this.report.connect_time,name:'连接时间'+this.report.connect_time},
-                        {value:this.report.total_time-this.report.start_time, name:'数据拼装时间'+(this.report.total_time-this.report.start_time)},
-                        {value:this.report.start_time-this.report.connect_time, name:'返回时间'+(this.report.start_time-this.report.connect_time)},
-                        // {value:this.report.start_time-this.report.pre_time-this.report.connect_time-this.report.lookup_time, name:'数据拼接时间'},
+                        {value:this.report.lookup_time, name:'DNS解析时间'+this.report.lookup_time},
+                        {value:this.report.connect_time,name:'连接时间'+(this.report.connect_time)},
+                        {value:this.report.pre_time, name:'数据发送和拼装时间'+(this.report.pre_time)},
+                        {value:this.report.start_time, name:'返回时间'+(this.report.start_time)},
+                        {value:this.report.total_time, name:'数据接受时间'+(this.report.total_time)},
                     ],
                     itemStyle: {
                         emphasis: {

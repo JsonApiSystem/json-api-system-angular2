@@ -2,7 +2,9 @@
 
 <div class="page-report">
     <div class="box-count">
+        <p class="title">数据连接概况图</p>
         <div [ng2-echarts]="option" style="height: 300px; width: 100%"></div>
+
     </div>
     <div class="box-detail">
         <div  *ngFor="let report of this.reportList; let i = index;">
